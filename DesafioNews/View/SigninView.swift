@@ -12,7 +12,6 @@ class SigninView: UIView{
     //MARK: Instance Properties
     
     
-    
     //MARK: Init
     
     override init(frame: CGRect = .zero) {
