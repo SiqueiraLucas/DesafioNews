@@ -10,8 +10,45 @@ import UIKit
 class SigninView: UIView {
 
     // MARK: Instance Properties
+    
+    let signinInformationContainer = SigninInformationContainer()
+    
+    lazy var titleLogin: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.text = "LOGIN"
+        view.textColor = .black
+        view.font = UIFont.boldSystemFont(ofSize: 40)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
-    var lloom = UILabel()
+    lazy var loginButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Login", for: .normal)
+        view.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        view.layer.cornerRadius = 4
+        view.backgroundColor = .systemOrange
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var registerButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Create Account?", for: .normal)
+        view.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        view.setTitleColor(.black, for: .normal)
+        view.layer.cornerRadius = 4
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var spinner: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.style = .large
+        view.color = .black
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // MARK: Init
 
@@ -29,12 +66,37 @@ class SigninView: UIView {
 
 extension SigninView: ViewCode {
     func setupConfiguration() {
-        backgroundColor = .red
+        backgroundColor = .white
     }
 
     func addViewHierarchy() {
+        addSubview(titleLogin)
+        addSubview(signinInformationContainer)
+        addSubview(loginButton)
+        addSubview(registerButton)
+        addSubview(spinner)
     }
 
     func configureConstraints() {
+        signinInformationContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -20).isActive = true
+        signinInformationContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        signinInformationContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
+        signinInformationContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
+        
+        titleLogin.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        titleLogin.leadingAnchor.constraint(equalTo: signinInformationContainer.leadingAnchor).isActive = true
+        
+        loginButton.topAnchor.constraint(equalTo: signinInformationContainer.bottomAnchor, constant: 30).isActive = true
+        loginButton.widthAnchor.constraint(equalTo: signinInformationContainer.widthAnchor).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loginButton.centerXAnchor.constraint(equalTo: signinInformationContainer.centerXAnchor).isActive = true
+        
+        registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
+        registerButton.widthAnchor.constraint(equalTo: loginButton.widthAnchor).isActive = true
+        registerButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor).isActive = true
+        registerButton.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor).isActive = true
+        
+        spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
 }
