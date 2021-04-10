@@ -7,33 +7,34 @@
 
 import UIKit
 
-class SigninView: UIView{
-    
-    //MARK: Instance Properties
-    
-    
-    //MARK: Init
-    
+class SigninView: UIView {
+
+    // MARK: Instance Properties
+
+    var lloom = UILabel()
+
+    // MARK: Init
+
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-//MARK: Extension
+// MARK: Extension
 
-extension SigninView: ViewCode{
+extension SigninView: ViewCode {
     func setupConfiguration() {
         backgroundColor = .red
     }
-    
-    func addViewHierarchy(){
+
+    func addViewHierarchy() {
     }
-    
-    func configureConstraints(){
+
+    func configureConstraints() {
     }
 }

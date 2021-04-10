@@ -6,6 +6,9 @@
 //
 
 import XCTest
+import Quick
+import Nimble
+import Nimble_Snapshots
 
 class DesafioNewsTests: XCTestCase {
 

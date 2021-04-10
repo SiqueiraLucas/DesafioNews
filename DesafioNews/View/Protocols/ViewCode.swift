@@ -7,15 +7,15 @@
 
 import Foundation
 
-protocol ViewCode{
+protocol ViewCode {
     func setupView()
     func setupConfiguration()
     func addViewHierarchy()
     func configureConstraints()
 }
 
-extension ViewCode{
-    func setupView(){
+extension ViewCode {
+    func setupView() {
         setupConfiguration()
         addViewHierarchy()
         configureConstraints()
