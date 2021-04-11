@@ -40,6 +40,7 @@ class SigninViewController: UIViewController {
     }
     
     func showViewController(viewController: UIViewController){
+        
 //        guard let sceneDelegate = UIApplication.shared.connectedScenes
 //                .first?.delegate as? SceneDelegate else {return}
 //        let navigation = UINavigationController(rootViewController: viewController)
