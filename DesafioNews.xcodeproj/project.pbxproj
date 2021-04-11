@@ -142,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				7F00C7BE2620D26F002A1AA8 /* SigninView.swift */,
-				7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */,
 				7F00C7C12620D280002A1AA8 /* SignupView.swift */,
+				7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */,
 				7F00C7B42620D022002A1AA8 /* Controller */,
 				7F00C7B82620D0E0002A1AA8 /* Protocols */,
 			);
