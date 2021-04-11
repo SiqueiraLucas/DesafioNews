@@ -71,6 +71,7 @@ extension SignupViewController: ViewModelDelegate{
     func requestSucess() {
         DispatchQueue.main.async {
             self.signupView.spinner.stopAnimating()
+            self.messagePresenter?.presentMessage("Cadastro realizado!", on: self)
             self.dismiss(animated: true, completion: nil)
         }
     }
