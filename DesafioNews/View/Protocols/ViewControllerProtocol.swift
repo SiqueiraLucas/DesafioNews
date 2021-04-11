@@ -12,7 +12,6 @@ protocol ViewControllerProtocol {
     func closureSetup()
     func delegateSetup()
     func getContentSetup()
-    func navigationControllerSetup()
     func targetsSetup()
     func additionalSetup()
 }
