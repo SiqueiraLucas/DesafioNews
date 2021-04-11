@@ -13,11 +13,11 @@ class SigninView: UIView {
     
     let signinInformationContainer = SigninInformationContainer()
     
-    lazy var titleLogin: UILabel = {
+    lazy var title: UILabel = {
         let view = UILabel(frame: .zero)
         view.text = "LOGIN"
         view.textColor = .black
-        view.font = UIFont.boldSystemFont(ofSize: 40)
+        view.font = UIFont.boldSystemFont(ofSize: 25)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -70,7 +70,7 @@ extension SigninView: ViewCode {
     }
 
     func addViewHierarchy() {
-        addSubview(titleLogin)
+        addSubview(title)
         addSubview(signinInformationContainer)
         addSubview(loginButton)
         addSubview(registerButton)
@@ -83,8 +83,8 @@ extension SigninView: ViewCode {
         signinInformationContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
         signinInformationContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
         
-        titleLogin.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        titleLogin.leadingAnchor.constraint(equalTo: signinInformationContainer.leadingAnchor).isActive = true
+        title.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        title.leadingAnchor.constraint(equalTo: signinInformationContainer.leadingAnchor).isActive = true
         
         loginButton.topAnchor.constraint(equalTo: signinInformationContainer.bottomAnchor, constant: 30).isActive = true
         loginButton.widthAnchor.constraint(equalTo: signinInformationContainer.widthAnchor).isActive = true

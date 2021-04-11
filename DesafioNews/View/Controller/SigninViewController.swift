@@ -11,9 +11,9 @@ class SigninViewController: UIViewController {
 
     // MARK: Instances
 
-    let signinView = SigninView(frame: UIScreen.main.bounds)
-    var signinViewModel = SigninViewModel(apiRequest: APIRequestPost())
-    var messagePresenter: MessagePresenterProtocol?
+    private let signinView = SigninView(frame: UIScreen.main.bounds)
+    private var signinViewModel = SigninViewModel(apiRequest: APIRequestPost())
+    private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
 
@@ -25,12 +25,6 @@ class SigninViewController: UIViewController {
         super.viewDidLoad()
         setup()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        navigationControllerSetup()
-        
-    }
     
     // MARK: Functions
     
@@ -39,6 +33,10 @@ class SigninViewController: UIViewController {
         signinView.isUserInteractionEnabled = false
         signinView.alpha = 0.5
         signinViewModel.sendValue(from: signinView.signinInformationContainer.emailTextField.text, passwordTextField: signinView.signinInformationContainer.passwordTextField.text)
+    }
+    
+    @objc func registerButtonAction(sender: UIButton) {
+        navigationController?.pushViewController(SignupViewController(), animated: true)
     }
     
     func showViewController(viewController: UIViewController){
@@ -58,7 +56,7 @@ class SigninViewController: UIViewController {
 
 }
 
-// MARK: ViewControllerProtocol
+// MARK: View Controller Protocol
 
 extension SigninViewController: ViewControllerProtocol{
     
@@ -74,6 +72,7 @@ extension SigninViewController: ViewControllerProtocol{
     
     func targetsSetup() {
         signinView.loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+        signinView.registerButton.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
     }
     
     func closureSetup()  {
@@ -84,36 +83,9 @@ extension SigninViewController: ViewControllerProtocol{
         
     }
     
-    func navigationControllerSetup(){
-        navigationController?.navigationBar.barTintColor = .white
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-    }
 }
 
-// MARK: - UITextFieldDelegate
-
-extension SigninViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newChar = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        let numberOfChars = newChar.count
-        
-        if string == "\n"{
-            textField.resignFirstResponder()
-        }
-        return numberOfChars <= 35
-    }
-}
-
-// MARK: - ViewModelDelegate
+// MARK: - View Model Delegate
 
 extension SigninViewController: ViewModelDelegate{
     func requestSucess() {
@@ -135,4 +107,25 @@ extension SigninViewController: ViewModelDelegate{
     func getInformationBack() {
     }
     
+}
+
+// MARK: - Text Field Delegate
+
+extension SigninViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newChar = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        let numberOfChars = newChar.count
+        
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return numberOfChars <= 35
+    }
 }

@@ -16,7 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let window = UIWindow(windowScene: windowScene)
             let firstViewController = SigninViewController()
+            firstViewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             let navigation = UINavigationController(rootViewController: firstViewController)
+            navigation.navigationBar.barTintColor = .white
+            navigation.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            navigation.navigationBar.shadowImage = UIImage()
+            navigation.navigationBar.tintColor = .systemOrange
             window.rootViewController = navigation
 
             self.window = window
