@@ -7,9 +7,13 @@
 
 import Foundation
 
-protocol APIRequestProtocol {
+protocol APIRequestProtocol{
     func getRequest(parameters: [String: Any], endpoint: String,
                      completionHandler: @escaping (_ result: Result<Any?, RequestError>) -> Void)
+}
+
+protocol APIRequestGetProtocol {
+    func getRequest<T: Codable> (endpoint: String, completionHandler: @escaping (_ result: Result<T, RequestError>) -> Void)
 }
 
 enum RequestError: Error {

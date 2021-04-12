@@ -42,6 +42,7 @@ class SignupViewController: UIViewController {
 extension SignupViewController: ViewControllerProtocol{
     
     func additionalSetup() {
+        self.title = "SIGN UP"
         messagePresenter = MessagePresenter()
     }
     
@@ -71,6 +72,7 @@ extension SignupViewController: ViewModelDelegate{
     func requestSucess() {
         DispatchQueue.main.async {
             self.signupView.spinner.stopAnimating()
+            self.messagePresenter?.presentMessage("Cadastro realizado!", on: self)
             self.dismiss(animated: true, completion: nil)
         }
     }

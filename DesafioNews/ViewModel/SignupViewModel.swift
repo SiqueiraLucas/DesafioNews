@@ -31,6 +31,8 @@ struct SignupViewModel {
         
     }
     
+    // MARK: Request
+    
     private func request(name: String, email: String, password: String){
         apiRequest?.getRequest(parameters: ["name": name, "email": email, "password": password], endpoint: "https://mesa-news-api.herokuapp.com/v1/client/auth/signup") { (result) in
             switch result{
@@ -38,14 +40,12 @@ struct SignupViewModel {
                 delegate?.requestSucess()
             case .failure(let error):
                 switch error {
-                case .invalidHTTPResponse(_):
-                    delegate?.requestError(errorMessage: "Email ou senha inválido(s)!")
-                case .networkError(_):
-                    delegate?.requestError(errorMessage: "Sem conexão com a internet!")
-                case .notHTTPResponse:
-                    delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
-                default:
-                    delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
+                    case .invalidHTTPResponse(_):
+                        delegate?.requestError(errorMessage: "Email ou senha inválido(s)!")
+                    case .networkError(_):
+                        delegate?.requestError(errorMessage: "Sem conexão com a internet!")
+                    default:
+                        delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
                 }
             }
         }

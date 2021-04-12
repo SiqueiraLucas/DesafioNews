@@ -40,19 +40,22 @@ class SigninViewController: UIViewController {
     }
     
     func showViewController(viewController: UIViewController){
-        
+//        self.removeFromParent()
+//        navigationController?.removeFromParent()
 //        guard let sceneDelegate = UIApplication.shared.connectedScenes
 //                .first?.delegate as? SceneDelegate else {return}
-//        let navigation = UINavigationController(rootViewController: viewController)
-//        sceneDelegate.window?.rootViewController = navigation
+//        let tabBarController = NewsTabBarController()
+//        sceneDelegate.window?.rootViewController = tabBarController
+//        sceneDelegate.window?.makeKeyAndVisible()
         
-//        viewController.modalPresentationStyle = .fullScreen
-//        self.navigationController?.present(viewController, animated: true, completion: {
-//            self.removeFromParent()
-//        })
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: {
+            self.navigationController?.removeFromParent()
+            self.removeFromParent()
+        })
         
-        self.navigationController?.setViewControllers([viewController], animated: true)
-        self.removeFromParent()
+//        self.navigationController?.setViewControllers([viewController], animated: true)
+//        self.removeFromParent()
     }
 
 }
@@ -62,6 +65,7 @@ class SigninViewController: UIViewController {
 extension SigninViewController: ViewControllerProtocol{
     
     func additionalSetup() {
+        self.title = "LOGIN"
         messagePresenter = MessagePresenter()
     }
     
@@ -92,7 +96,7 @@ extension SigninViewController: ViewModelDelegate{
     func requestSucess() {
         DispatchQueue.main.async {
             self.signinView.spinner.stopAnimating()
-            self.showViewController(viewController: NewsViewController())
+            self.showViewController(viewController: NewsTabBarController())
         }
     }
     

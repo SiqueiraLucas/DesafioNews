@@ -12,15 +12,6 @@ class SignupView: UIView {
     // MARK: Instance Properties
     
     let signupInformationContainer = SignupInformationContainer()
-    
-    lazy var title: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.text = "CREATE ACCOUNT"
-        view.textColor = .black
-        view.font = UIFont.boldSystemFont(ofSize: 25)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
 
     lazy var registerButton: UIButton = {
         let view = UIButton(frame: .zero)
@@ -60,7 +51,6 @@ extension SignupView: ViewCode {
     }
 
     func addViewHierarchy() {
-        addSubview(title)
         addSubview(signupInformationContainer)
         addSubview(registerButton)
         addSubview(spinner)
@@ -71,9 +61,6 @@ extension SignupView: ViewCode {
         signupInformationContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         signupInformationContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
         signupInformationContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
-        
-        title.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        title.leadingAnchor.constraint(equalTo: signupInformationContainer.leadingAnchor).isActive = true
         
         registerButton.topAnchor.constraint(equalTo: signupInformationContainer.bottomAnchor, constant: 30).isActive = true
         registerButton.widthAnchor.constraint(equalTo: signupInformationContainer.widthAnchor).isActive = true

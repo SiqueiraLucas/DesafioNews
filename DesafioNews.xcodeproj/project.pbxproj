@@ -16,6 +16,13 @@
 		7F00C7C22620D280002A1AA8 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7C12620D280002A1AA8 /* SignupView.swift */; };
 		7F00C7C62620D2A8002A1AA8 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7C52620D2A8002A1AA8 /* SigninViewController.swift */; };
 		7F00C7CA2620D2BA002A1AA8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7C92620D2BA002A1AA8 /* SignupViewController.swift */; };
+		7F0227D4262373200065AC98 /* SpotlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0227D3262373200065AC98 /* SpotlightCell.swift */; };
+		7F0227D8262378A60065AC98 /* NewsViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0227D7262378A60065AC98 /* NewsViewSpec.swift */; };
+		7F0227DE2623806A0065AC98 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0227DD2623806A0065AC98 /* NewsView.swift */; };
+		7F0227EA2623889B0065AC98 /* NewsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0227E92623889B0065AC98 /* NewsCollectionView.swift */; };
+		7F0227EE2623A09F0065AC98 /* SpotlightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0227ED2623A09F0065AC98 /* SpotlightViewModel.swift */; };
+		7F0227F22623A1760065AC98 /* APIRequestGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0227F12623A1760065AC98 /* APIRequestGet.swift */; };
+		7F0227F62623A3890065AC98 /* SpotlightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0227F52623A3890065AC98 /* SpotlightModel.swift */; };
 		7F14B12A26229847003FB146 /* SignupInformationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14B12926229847003FB146 /* SignupInformationContainer.swift */; };
 		7F14B12E26229980003FB146 /* SignupViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14B12D26229980003FB146 /* SignupViewSpec.swift */; };
 		7F1A66072621451600A6790C /* SigninViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1A66062621451600A6790C /* SigninViewSpec.swift */; };
@@ -31,6 +38,8 @@
 		7FE7A35C26224B8900C05D75 /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */; };
 		7FE7A36126224BA800C05D75 /* MessagePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A36026224BA800C05D75 /* MessagePresenterProtocol.swift */; };
 		7FE7A36F2622600700C05D75 /* SigninInformationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */; };
+		7FFA368E2623EE11005D0361 /* NewsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA368D2623EE11005D0361 /* NewsTabBarController.swift */; };
+		7FFA36922623F700005D0361 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFA36912623F700005D0361 /* CustomNavigationController.swift */; };
 		B9AF443CCA323FDF372BCBA2 /* Pods_DesafioNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42CBF5D47389088E590A3A6 /* Pods_DesafioNewsTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +67,13 @@
 		7F00C7C92620D2BA002A1AA8 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		7F00C7D12620D3D9002A1AA8 /* DesafioNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F00C7D52620D3D9002A1AA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F0227D3262373200065AC98 /* SpotlightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightCell.swift; sourceTree = "<group>"; };
+		7F0227D7262378A60065AC98 /* NewsViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewSpec.swift; sourceTree = "<group>"; };
+		7F0227DD2623806A0065AC98 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		7F0227E92623889B0065AC98 /* NewsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionView.swift; sourceTree = "<group>"; };
+		7F0227ED2623A09F0065AC98 /* SpotlightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightViewModel.swift; sourceTree = "<group>"; };
+		7F0227F12623A1760065AC98 /* APIRequestGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestGet.swift; sourceTree = "<group>"; };
+		7F0227F52623A3890065AC98 /* SpotlightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightModel.swift; sourceTree = "<group>"; };
 		7F14B12926229847003FB146 /* SignupInformationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInformationContainer.swift; sourceTree = "<group>"; };
 		7F14B12D26229980003FB146 /* SignupViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewSpec.swift; sourceTree = "<group>"; };
 		7F1A66062621451600A6790C /* SigninViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewSpec.swift; sourceTree = "<group>"; };
@@ -73,6 +89,8 @@
 		7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
 		7FE7A36026224BA800C05D75 /* MessagePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenterProtocol.swift; sourceTree = "<group>"; };
 		7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninInformationContainer.swift; sourceTree = "<group>"; };
+		7FFA368D2623EE11005D0361 /* NewsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTabBarController.swift; sourceTree = "<group>"; };
+		7FFA36912623F700005D0361 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		B42CBF5D47389088E590A3A6 /* Pods_DesafioNewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesafioNewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3CEF74AC7F447C36CDD0B0F /* Pods-DesafioNewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioNewsTests.debug.xcconfig"; path = "Target Support Files/Pods-DesafioNewsTests/Pods-DesafioNewsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAA303196F4FF6A3E9BD926C /* Pods_DesafioNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DesafioNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				7F00C7BE2620D26F002A1AA8 /* SigninView.swift */,
+				7F0227DD2623806A0065AC98 /* NewsView.swift */,
+				7F0227D3262373200065AC98 /* SpotlightCell.swift */,
 				7F00C7C12620D280002A1AA8 /* SignupView.swift */,
 				7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */,
 				7F14B12926229847003FB146 /* SignupInformationContainer.swift */,
@@ -162,6 +182,7 @@
 			children = (
 				7F38AD0F2622306400B89DC2 /* SigninViewModel.swift */,
 				7FBD39E026229D8100795C69 /* SignupViewModel.swift */,
+				7F0227ED2623A09F0065AC98 /* SpotlightViewModel.swift */,
 				7F00C7B92620D0FE002A1AA8 /* Protocols */,
 			);
 			path = ViewModel;
@@ -170,6 +191,7 @@
 		7F00C7B12620D007002A1AA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7F0227F52623A3890065AC98 /* SpotlightModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +203,7 @@
 				7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */,
 				7F38AD0A26221C1600B89DC2 /* StringUtils.swift */,
 				7F38AD0426221B3500B89DC2 /* APIRequestPost.swift */,
+				7F0227F12623A1760065AC98 /* APIRequestGet.swift */,
 				7FE7A35F26224B9200C05D75 /* Protocols */,
 			);
 			path = Utils;
@@ -201,6 +224,9 @@
 				7F00C7C52620D2A8002A1AA8 /* SigninViewController.swift */,
 				7F00C7C92620D2BA002A1AA8 /* SignupViewController.swift */,
 				7F1A661026214F4B00A6790C /* NewsViewController.swift */,
+				7F0227E92623889B0065AC98 /* NewsCollectionView.swift */,
+				7FFA368D2623EE11005D0361 /* NewsTabBarController.swift */,
+				7FFA36912623F700005D0361 /* CustomNavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,6 +279,7 @@
 			children = (
 				7F1A66062621451600A6790C /* SigninViewSpec.swift */,
 				7F14B12D26229980003FB146 /* SignupViewSpec.swift */,
+				7F0227D7262378A60065AC98 /* NewsViewSpec.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -441,7 +468,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F38AD0B26221C1600B89DC2 /* StringUtils.swift in Sources */,
+				7F0227DE2623806A0065AC98 /* NewsView.swift in Sources */,
 				7F38AD182622333200B89DC2 /* APIRequestProtocol.swift in Sources */,
+				7FFA368E2623EE11005D0361 /* NewsTabBarController.swift in Sources */,
 				7F1A660D26214E7600A6790C /* ViewControllerProtocol.swift in Sources */,
 				7FE7A36F2622600700C05D75 /* SigninInformationContainer.swift in Sources */,
 				7F00C7C62620D2A8002A1AA8 /* SigninViewController.swift in Sources */,
@@ -453,12 +482,18 @@
 				7F14B12A26229847003FB146 /* SignupInformationContainer.swift in Sources */,
 				7FE7A36126224BA800C05D75 /* MessagePresenterProtocol.swift in Sources */,
 				7F00C7BF2620D26F002A1AA8 /* SigninView.swift in Sources */,
+				7F0227F22623A1760065AC98 /* APIRequestGet.swift in Sources */,
 				7F38AD1C2622367000B89DC2 /* ViewModelDelegate.swift in Sources */,
+				7F0227D4262373200065AC98 /* SpotlightCell.swift in Sources */,
 				7F38AD102622306400B89DC2 /* SigninViewModel.swift in Sources */,
+				7F0227EA2623889B0065AC98 /* NewsCollectionView.swift in Sources */,
+				7FFA36922623F700005D0361 /* CustomNavigationController.swift in Sources */,
 				7F1A661126214F4B00A6790C /* NewsViewController.swift in Sources */,
 				7F00C79D2620CFE4002A1AA8 /* SceneDelegate.swift in Sources */,
 				7F38AD0026221B0000B89DC2 /* APIRequest.swift in Sources */,
+				7F0227EE2623A09F0065AC98 /* SpotlightViewModel.swift in Sources */,
 				7F00C7BB2620D15B002A1AA8 /* ViewCode.swift in Sources */,
+				7F0227F62623A3890065AC98 /* SpotlightModel.swift in Sources */,
 				7F38AD0526221B3500B89DC2 /* APIRequestPost.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F0227D8262378A60065AC98 /* NewsViewSpec.swift in Sources */,
 				7F1A66072621451600A6790C /* SigninViewSpec.swift in Sources */,
 				7F14B12E26229980003FB146 /* SignupViewSpec.swift in Sources */,
 			);
