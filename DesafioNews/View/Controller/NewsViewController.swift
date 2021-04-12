@@ -12,7 +12,7 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = SpotlightViewModel(model: SpotlightModel(), apiRequest: APIRequestGet())
+    let spotlightViewModel = SpotlightViewModel(model: SpotlightModel(), networkRequest: NetworkRequest())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -57,7 +57,8 @@ extension NewsViewController: ViewControllerProtocol{
     }
     
     func getContentSetup(){
-        spotlightViewModel.request(endpoint: "https://mesa-news-api.herokuapp.com/v1/client/news/highlights")
+        let endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
+        spotlightViewModel.request(endpoint: endpoint, parameters: nil)
     }
 }
 

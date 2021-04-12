@@ -12,7 +12,7 @@ class SigninViewController: UIViewController {
     // MARK: Instances
 
     private let signinView = SigninView(frame: UIScreen.main.bounds)
-    private var signinViewModel = SigninViewModel(apiRequest: APIRequestPost())
+    private var signinViewModel = SigninViewModel(networkRequest: NetworkRequest())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -65,7 +65,7 @@ class SigninViewController: UIViewController {
 extension SigninViewController: ViewControllerProtocol{
     
     func additionalSetup() {
-        self.title = "LOGIN"
+        self.title = "Login"
         messagePresenter = MessagePresenter()
     }
     

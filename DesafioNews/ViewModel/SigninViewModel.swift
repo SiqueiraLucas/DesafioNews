@@ -11,14 +11,14 @@ struct SigninViewModel {
     
     //MARK: - Instances
     
-    var apiRequest: APIRequestProtocol?
+    var networkRequest: NetworkRequestProtocol?
     
     weak var delegate: ViewModelDelegate?
     
     //MARK: Initializer
     
-    init (apiRequest: APIRequestProtocol){
-        self.apiRequest = apiRequest
+    init (networkRequest: NetworkRequestProtocol){
+        self.networkRequest = networkRequest
     }
     
     //MARK: Functions
@@ -26,14 +26,16 @@ struct SigninViewModel {
     func sendValue(from emailTextField: String?, passwordTextField: String?) {
         guard let emailTextField = emailTextField else {return}
         guard let passwordTextField = passwordTextField else {return}
-        request(email: emailTextField, password: passwordTextField)
+        let parameters = ["email": emailTextField, "password": passwordTextField]
+        let endpoint = "https://mesa-news-api.herokuapp.com/v1/client/auth/signin"
+        request(endpoint: endpoint, parameters: parameters)
         
     }
     
     // MARK: Request
     
-    private func request(email: String, password: String){
-        apiRequest?.getRequest(parameters: ["email": email, "password": password], endpoint: "https://mesa-news-api.herokuapp.com/v1/client/auth/signin") { (result) in
+    private func request(endpoint: String, parameters: [String: Any]){
+        networkRequest?.post(endpoint: endpoint, parameters: parameters, completionHandler: { (result) in
             switch result{
             case .success(_):
                 delegate?.requestSucess()
@@ -47,6 +49,6 @@ struct SigninViewModel {
                         delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
                 }
             }
-        }
+        })
     }
 }

@@ -22,7 +22,7 @@ class SpotlightCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let view = UILabel(frame: .zero)
-        view.font = UIFont.preferredFont(forTextStyle: .title1)
+        view.font = UIFont.preferredFont(forTextStyle: .title2)
         view.textColor = .label
         view.text = "Peixes aprendem a nadar"
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class SpotlightCell: UICollectionViewCell {
     
     lazy var subtitle: UILabel = {
         let view = UILabel(frame: .zero)
-        view.font = UIFont.preferredFont(forTextStyle: .title2)
+        view.font = UIFont.preferredFont(forTextStyle: .title3)
         view.textColor = .secondaryLabel
         view.text = "Na água"
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +100,7 @@ extension SpotlightCell: ViewCode {
             
         ])
         
-        stackView.setCustomSpacing(10, after: separator)
-        stackView.setCustomSpacing(20, after: subtitle)
+        stackView.setCustomSpacing(15, after: imageView)
+        stackView.setCustomSpacing(10, after: subtitle)
     }
 }

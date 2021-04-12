@@ -15,7 +15,7 @@ class SpotlightViewModel {
     
     private var images = [UIImage?]()
     
-    var apiRequest: APIRequestGetProtocol?
+    var networkRequest: NetworkRequestProtocol?
     
     weak var delegate: ViewModelDelegate?
     
@@ -25,9 +25,9 @@ class SpotlightViewModel {
     
     //MARK: Initializer
     
-    init (model: SpotlightModel, apiRequest: APIRequestGetProtocol){
+    init (model: SpotlightModel, networkRequest: NetworkRequestProtocol){
         self.spotlight = model
-        self.apiRequest = apiRequest
+        self.networkRequest = networkRequest
     }
     
     //MARK: Functions
@@ -73,8 +73,8 @@ class SpotlightViewModel {
     
     // MARK: Request
     
-    func request(endpoint: String){
-        apiRequest?.getRequest(endpoint: endpoint) { [weak self] (result: Result<SpotlightModel, RequestError>) in
+    func request(endpoint: String, parameters: [String: Any]?){
+        networkRequest?.get(resource: SpotlightModel.self, endpoint: endpoint, parameters: parameters, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
                     self?.spotlight = data
@@ -83,6 +83,6 @@ class SpotlightViewModel {
                     print(error)
                     self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
             }
-        }
+        })
     }
 }
