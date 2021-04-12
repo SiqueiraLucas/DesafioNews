@@ -14,7 +14,7 @@ class SpotlightCell: UICollectionViewCell {
     lazy var tagline: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 12, weight: .bold))
-        view.textColor = .systemBlue
+        view.textColor = .systemOrange
         view.text = "DESTAQUE"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -22,7 +22,7 @@ class SpotlightCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let view = UILabel(frame: .zero)
-        view.font = UIFont.preferredFont(forTextStyle: .title2)
+        view.font = UIFont.preferredFont(forTextStyle: .title1)
         view.textColor = .label
         view.text = "Peixes aprendem a nadar"
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +42,7 @@ class SpotlightCell: UICollectionViewCell {
         let view = UIImageView(frame: .zero)
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -57,8 +57,6 @@ class SpotlightCell: UICollectionViewCell {
     lazy var stackView: UIStackView = {
         let view = UIStackView(frame: .zero)
         view.axis = .vertical
-        view.setCustomSpacing(10, after: separator)
-        view.setCustomSpacing(10, after: subtitle)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -99,6 +97,10 @@ extension SpotlightCell: ViewCode {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            
         ])
+        
+        stackView.setCustomSpacing(10, after: separator)
+        stackView.setCustomSpacing(20, after: subtitle)
     }
 }

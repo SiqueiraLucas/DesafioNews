@@ -13,7 +13,7 @@ class SpotlightViewModel {
     
     private var spotlight: SpotlightModel
     
-    private var images = [UIImage]()
+    private var images = [UIImage?]()
     
     var apiRequest: APIRequestGetProtocol?
     
@@ -45,19 +45,40 @@ class SpotlightViewModel {
     }
     
     func returnImage(index: Int) -> UIImage? {
-        guard let url = URL(string: spotlight.data[index].image_url) else {return nil}
-        let data = try? Data(contentsOf: url)
-        guard let imageData = data else {return nil}
-        guard let image = UIImage(data: imageData) else {return nil}
-        return image
+        if images.count > index{
+            return images[index]
+        }else{
+            return nil
+        }
     }
+    
+    private func loadImages(){
+        images = [UIImage?] (repeating: nil, count: countItems-1)
+        for i in 0...countItems-1{
+            addImage(index: i)
+            if i == countItems-1{
+                delegate?.requestSucess()
+            }
+        }
+    }
+    
+    private func addImage(index: Int){
+        guard let url = URL(string: spotlight.data[index].image_url) else {return}
+        let data = try? Data(contentsOf: url)
+        guard let imageData = data else {return}
+        guard let image = UIImage(data: imageData) else {return}
+        images[index] = image
+        
+    }
+    
+    // MARK: Request
     
     func request(endpoint: String){
         apiRequest?.getRequest(endpoint: endpoint) { [weak self] (result: Result<SpotlightModel, RequestError>) in
             switch result {
                 case .success(let data):
                     self?.spotlight = data
-                    self?.delegate?.requestSucess()
+                    self?.loadImages()
                 case .failure(let error):
                     print(error)
                     self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")

@@ -15,7 +15,14 @@ class NewsView: UIView {
         let view = UICollectionView(frame: self.bounds, collectionViewLayout: createCompositionalLayout())
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .systemBackground
+        view.backgroundView = activityIndicator
         view.register(SpotlightCell.self, forCellWithReuseIdentifier: "SpotlightCell")
+        return view
+    }()
+    
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.startAnimating()
         return view
     }()
 
@@ -44,7 +51,7 @@ class NewsView: UIView {
     }
     
     func createSpotlightSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.5))
 
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)

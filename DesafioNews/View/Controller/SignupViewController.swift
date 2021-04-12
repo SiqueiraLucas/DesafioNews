@@ -42,6 +42,7 @@ class SignupViewController: UIViewController {
 extension SignupViewController: ViewControllerProtocol{
     
     func additionalSetup() {
+        self.title = "SIGN UP"
         messagePresenter = MessagePresenter()
     }
     

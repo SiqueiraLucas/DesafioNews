@@ -31,6 +31,8 @@ struct SignupViewModel {
         
     }
     
+    // MARK: Request
+    
     private func request(name: String, email: String, password: String){
         apiRequest?.getRequest(parameters: ["name": name, "email": email, "password": password], endpoint: "https://mesa-news-api.herokuapp.com/v1/client/auth/signup") { (result) in
             switch result{
