@@ -16,4 +16,5 @@ struct NewsData: Codable {
     var highlight: Bool
     var url: String
     var image_url: String
+    var isFavorite: Bool? = false
 }

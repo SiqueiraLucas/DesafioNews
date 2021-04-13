@@ -38,6 +38,16 @@ class SpotlightViewModel {
         return spotlightModel.data[index].description
     }
     
+    func returnDate(index: Int) -> String?{
+        let date = spotlightModel.data[index].published_at
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        guard let dateFromString : Date = dateFormatter.date(from: date) else {return "10/10"}
+        dateFormatter.dateFormat = "dd/MM/yyy"
+        let newDate = dateFormatter.string(from: dateFromString)
+        return newDate
+    }
+    
     func returnUrl(index: Int) -> String? {
         return spotlightModel.data[index].url
     }
@@ -46,10 +56,22 @@ class SpotlightViewModel {
         return spotlightModel.data[index].image_url
     }
     
+    func returnFavoriteImageName(index: Int) -> String{
+        if spotlightModel.data[index].isFavorite ?? false{
+            return "heart.fill"
+        }else{
+            return "heart"
+        }
+    }
+    
+    func favorite(index: Int){
+        spotlightModel.data[index].isFavorite = true
+    }
+    
     // MARK: Request
     
-    func request(endpoint: String){
-        networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, completionHandler: { [weak self] (result) in
+    func request(endpoint: String, components: [URLQueryItem]?){
+        networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, components: components, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
                     self?.spotlightModel = data

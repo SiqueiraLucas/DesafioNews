@@ -11,9 +11,12 @@ class NetworkRequest: NetworkRequestProtocol{
     
     // MARK: Get
     
-    func get<T: Codable>(resource: T.Type, endpoint: String, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
+    func get<T: Codable>(resource: T.Type, endpoint: String, components: [URLQueryItem]?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
         
-        guard let url = URL(string: endpoint) else {return}
+        var urlComponents = URLComponents(string: endpoint)
+        urlComponents?.queryItems = components
+
+        guard let url = urlComponents?.url else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let key = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjU5LCJlbWFpbCI6ImRpbWFzLmdhYnJpZWxAenJvYmFuay5jb20uYnIifQ.a3j7sRx8FIedZCfDGLocduOYpcibfIenX7TVJjv6Sis"

@@ -9,7 +9,7 @@ import Foundation
 
 protocol NetworkRequestProtocol {
     
-    func get<T: Codable> (resource: T.Type, endpoint: String, completionHandler: @escaping (_ result: Result<T, RequestError>) -> Void)
+    func get<T: Codable> (resource: T.Type, endpoint: String, components: [URLQueryItem]?, completionHandler: @escaping (_ result: Result<T, RequestError>) -> Void)
     
     func post(endpoint: String, parameters: [String: Any],
                      completionHandler: @escaping (_ result: Result<Any?, RequestError>) -> Void)

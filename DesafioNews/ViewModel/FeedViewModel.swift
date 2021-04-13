@@ -40,6 +40,16 @@ class FeedViewModel {
         return feedModel.data[index].description
     }
     
+    func returnDate(index: Int) -> String?{
+        let date = feedModel.data[index].published_at
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        guard let dateFromString : Date = dateFormatter.date(from: date) else {return "10/10"}
+        dateFormatter.dateFormat = "dd/MM/yyy"
+        let newDate = dateFormatter.string(from: dateFromString)
+        return newDate
+    }
+    
     func returnUrl(index: Int) -> String? {
         return feedModel.data[index].url
     }
@@ -48,25 +58,41 @@ class FeedViewModel {
         return feedModel.data[index].image_url
     }
     
-    func returnCurrentPage() ->Int {
+    private func returnCurrentPage() ->String {
         newCurrentPage += 1
-        return newCurrentPage
+        return newCurrentPage.description
     }
     
-    func returnPerPage() -> Int {
-        return 10
+    func returnUrlComponents() -> [URLQueryItem]{
+        return [
+            URLQueryItem(name: "current_page", value: returnCurrentPage()),
+            URLQueryItem(name: "per_page", value: "10"),
+            URLQueryItem(name: "published_at", value: ""),
+        ]
+    }
+    
+    func returnFavoriteImageName(index: Int) -> String{
+        if feedModel.data[index].isFavorite ?? false{
+            return "heart.fill"
+        }else{
+            return "heart"
+        }
+    }
+    
+    func favorite(index: Int){
+        feedModel.data[index].isFavorite = true
     }
     
     // MARK: Request
     
-    func request(endpoint: String){
-        networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, completionHandler: { [weak self] (result) in
+    func request(endpoint: String, components: [URLQueryItem]?){
+        networkRequest?.get(resource: NewsModel.self, endpoint: endpoint,components: components, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
                     self?.feedModel.data.append(contentsOf: data.data)
                     self?.delegate?.requestSucess()
                 case .failure(let error):
-                    print(error)
+                    print("-------->\(error)")
             }
         })
     }

@@ -29,7 +29,7 @@ class NewsViewController: UIViewController {
     
     // MARK: Functions
     
-    @objc func loginButtonAction(sender: UIButton!) {
+    @objc func favoriteButtonAction(sender: UIButton) {
         
     }
 
@@ -60,9 +60,9 @@ extension NewsViewController: ViewControllerProtocol{
     
     func getContentSetup(){
         let endpointSpotlight = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
-        let endpointFeed = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=\(feedViewModel.returnCurrentPage())&per_page=\(feedViewModel.returnPerPage())&published_at="
-        spotlightViewModel.request(endpoint: endpointSpotlight)
-        feedViewModel.request(endpoint: endpointFeed)
+        let endpointFeed = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=&per_page=&published_at="
+        spotlightViewModel.request(endpoint: endpointSpotlight, components: nil)
+        feedViewModel.request(endpoint: endpointFeed, components: feedViewModel.returnUrlComponents())
     }
 }
 
