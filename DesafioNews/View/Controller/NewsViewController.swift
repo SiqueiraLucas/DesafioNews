@@ -12,7 +12,8 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = SpotlightViewModel(model: SpotlightModel(), networkRequest: NetworkRequest())
+    let spotlightViewModel = SpotlightViewModel(model: NewsModel(), networkRequest: NetworkRequest())
+    let feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequest())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -47,6 +48,7 @@ extension NewsViewController: ViewControllerProtocol{
         newsView.collectionView.delegate = self
         newsView.collectionView.dataSource = self
         spotlightViewModel.delegate = self
+        feedViewModel.delegate = self
         
     }
     
@@ -58,7 +60,9 @@ extension NewsViewController: ViewControllerProtocol{
     
     func getContentSetup(){
         let endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
-        spotlightViewModel.request(endpoint: endpoint, parameters: nil)
+        let endpoint2 = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=&per_page=&published_at="
+        spotlightViewModel.request(endpoint: endpoint)
+        feedViewModel.request(endpoint: endpoint2)
     }
 }
 

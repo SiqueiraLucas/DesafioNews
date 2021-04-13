@@ -1,5 +1,5 @@
 //
-//  SpotlightModel.swift
+//  NewsModel.swift
 //  DesafioNews
 //
 //  Created by Lucas Siqueira on 11/04/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SpotlightModel: Codable {
+struct NewsModel: Codable {
     var data: [Datum] = []
 }
 

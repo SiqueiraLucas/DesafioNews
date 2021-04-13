@@ -22,6 +22,15 @@ class NewsViewSpec: QuickSpec{
                     expect(view) == snapshot("SpotlightCell")
                 }
             }
+            
+            context("Elementos da FeedCell"){
+                it("Estão posicionados corretamente") {
+                    let frame = CGRect(x: 0, y: 0, width: 375, height: 100)
+                    let view = FeedCell(frame: frame)
+                    
+                    expect(view) == snapshot("FeedCell")
+                }
+            }
         }
     }
 }

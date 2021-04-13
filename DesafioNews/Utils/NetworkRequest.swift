@@ -11,7 +11,7 @@ class NetworkRequest: NetworkRequestProtocol{
     
     // MARK: Get
     
-    func get<T>(resource: T.Type, endpoint: String, parameters: [String : Any]?, completionHandler: @escaping (Result<T, RequestError>) -> Void) where T : Decodable, T : Encodable {
+    func get<T: Codable>(resource: T.Type, endpoint: String, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
         
         guard let url = URL(string: endpoint) else {return}
         var request = URLRequest(url: url)

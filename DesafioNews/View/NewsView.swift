@@ -17,6 +17,7 @@ class NewsView: UIView {
         view.backgroundColor = .systemBackground
         view.backgroundView = activityIndicator
         view.register(SpotlightCell.self, forCellWithReuseIdentifier: "SpotlightCell")
+        view.register(FeedCell.self, forCellWithReuseIdentifier: "FeedCell")
         return view
     }()
     
@@ -25,6 +26,8 @@ class NewsView: UIView {
         view.startAnimating()
         return view
     }()
+    
+    let sections = [0,1]
 
     // MARK: Init
 
@@ -40,18 +43,20 @@ class NewsView: UIView {
     // MARK: Functions
     
     func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            self.createSpotlightSection()
+        return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+             switch sectionNumber {
+                case 0:
+                    return self.createSpotlightSection()
+                case 1:
+                    return self.createFeedSection()
+                default:
+                    return self.createSpotlightSection()
+             }
         }
-
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
-        layout.configuration = config
-        return layout
     }
     
     func createSpotlightSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.9))
 
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
@@ -61,6 +66,19 @@ class NewsView: UIView {
 
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
         layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
+        return layoutSection
+    }
+    
+    func createFeedSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.25))
+
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .estimated(350))
+        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
+
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
         return layoutSection
     }
 }
