@@ -34,7 +34,7 @@ class FeedCell: UICollectionViewCell {
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
-        view.backgroundColor = .red
+        view.backgroundColor = .systemGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

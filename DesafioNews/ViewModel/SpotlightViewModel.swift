@@ -5,15 +5,13 @@
 //  Created by Lucas Siqueira on 11/04/21.
 //
 
-import UIKit
+import Foundation
 
 class SpotlightViewModel {
     
     //MARK: - Instances
     
     private var spotlightModel: NewsModel
-    
-    private var images = [UIImage?]()
     
     var networkRequest: NetworkRequestProtocol?
     
@@ -44,31 +42,8 @@ class SpotlightViewModel {
         return spotlightModel.data[index].url
     }
     
-    func returnImage(index: Int) -> UIImage? {
-        if images.count > index{
-            return images[index]
-        }else{
-            return nil
-        }
-    }
-    
-    private func loadImages(){
-        images = [UIImage?] (repeating: nil, count: countItems-1)
-        for i in 0...countItems-1{
-            addImage(index: i)
-            if i == countItems-1{
-                delegate?.requestSucess()
-            }
-        }
-    }
-    
-    private func addImage(index: Int){
-        guard let url = URL(string: spotlightModel.data[index].image_url) else {return}
-        let data = try? Data(contentsOf: url)
-        guard let imageData = data else {return}
-        guard let image = UIImage(data: imageData) else {return}
-        images[index] = image
-        
+    func returnUrlImage(index: Int) -> String? {
+        return spotlightModel.data[index].image_url
     }
     
     // MARK: Request
@@ -78,7 +53,7 @@ class SpotlightViewModel {
             switch result {
                 case .success(let data):
                     self?.spotlightModel = data
-                    self?.loadImages()
+                    self?.delegate?.requestSucess()
                 case .failure(let error):
                     print(error)
                     self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")

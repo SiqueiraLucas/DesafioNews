@@ -310,6 +310,7 @@
 				7F00C7932620CFE4002A1AA8 /* Sources */,
 				7F00C7942620CFE4002A1AA8 /* Frameworks */,
 				7F00C7952620CFE4002A1AA8 /* Resources */,
+				047EC572A5644F69F54B933B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -396,6 +397,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		047EC572A5644F69F54B933B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioNews/Pods-DesafioNews-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioNews/Pods-DesafioNews-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioNews/Pods-DesafioNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		41FAEC766385F2695584421D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

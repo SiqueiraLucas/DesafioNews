@@ -5,15 +5,13 @@
 //  Created by Lucas Siqueira on 12/04/21.
 //
 
-import UIKit
+import Foundation
 
 class FeedViewModel {
     
     //MARK: - Instances
     
     private var feedModel: NewsModel
-    
-    private var images = [UIImage?]()
     
     var networkRequest: NetworkRequestProtocol?
     
@@ -44,36 +42,8 @@ class FeedViewModel {
         return feedModel.data[index].url
     }
     
-    func returnImage(index: Int) -> UIImage? {
-//        if images.count > index{
-//            return images[index]
-//        }else{
-//            return nil
-//        }
-        guard let url = URL(string: feedModel.data[index].image_url) else {return nil}
-        let data = try? Data(contentsOf: url)
-        guard let imageData = data else {return nil}
-        guard let image = UIImage(data: imageData) else {return nil}
-        return image
-    }
-    
-    private func loadImages(){
-        images = [UIImage?] (repeating: nil, count: countItems-1)
-        for i in 0...images.count-1{
-            addImage(index: i)
-            if i == countItems-1{
-                delegate?.requestSucess()
-            }
-        }
-    }
-    
-    private func addImage(index: Int){
-        guard let url = URL(string: feedModel.data[index].image_url) else {return}
-        let data = try? Data(contentsOf: url)
-        guard let imageData = data else {return}
-        guard let image = UIImage(data: imageData) else {return}
-        images[index] = image
-        
+    func returnUrlImage(index: Int) -> String? {
+        return feedModel.data[index].image_url
     }
     
     // MARK: Request
@@ -84,7 +54,6 @@ class FeedViewModel {
                 case .success(let data):
                     self?.feedModel = data
                     self?.delegate?.requestSucess()
-//                    self?.loadImages()
                 case .failure(let error):
                     print(error)
                     self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")

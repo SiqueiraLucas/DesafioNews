@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
@@ -24,13 +25,17 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpotlightCell", for: indexPath) as! SpotlightCell
-            cell.imageView.image = spotlightViewModel.returnImage(index: indexPath.row)
+            if let urlImage = spotlightViewModel.returnUrlImage(index: indexPath.row){
+                cell.imageView.sd_setImage(with: URL(string: urlImage), placeholderImage: UIImage(named: "spotlight\(indexPath.row).png"))
+            }
             cell.title.text = spotlightViewModel.returnTitle(index: indexPath.row)
             cell.subtitle.text = spotlightViewModel.returnDescription(index: indexPath.row)
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as! FeedCell
-            cell.imageView.image = feedViewModel.returnImage(index: indexPath.row)
+            if let urlImage = feedViewModel.returnUrlImage(index: indexPath.row){
+                cell.imageView.sd_setImage(with: URL(string: urlImage), placeholderImage: UIImage(named: "feed\(indexPath.row).png"))
+            }
             cell.title.text = feedViewModel.returnTitle(index: indexPath.row)
             cell.subtitle.text = feedViewModel.returnDescription(index: indexPath.row)
             return cell
