@@ -59,10 +59,10 @@ extension NewsViewController: ViewControllerProtocol{
     }
     
     func getContentSetup(){
-        let endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
-        let endpoint2 = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=&per_page=&published_at="
-        spotlightViewModel.request(endpoint: endpoint)
-        feedViewModel.request(endpoint: endpoint2)
+        let endpointSpotlight = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
+        let endpointFeed = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=\(feedViewModel.returnCurrentPage())&per_page=\(feedViewModel.returnPerPage())&published_at="
+        spotlightViewModel.request(endpoint: endpointSpotlight)
+        feedViewModel.request(endpoint: endpointFeed)
     }
 }
 

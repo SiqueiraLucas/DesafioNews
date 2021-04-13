@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let window = UIWindow(windowScene: windowScene)
             window.overrideUserInterfaceStyle = .light
-            window.rootViewController = NewsTabBarController()
+            window.rootViewController = navigation
 
             self.window = window
             window.makeKeyAndVisible()

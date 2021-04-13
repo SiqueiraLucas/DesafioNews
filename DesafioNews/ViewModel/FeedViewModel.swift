@@ -13,6 +13,8 @@ class FeedViewModel {
     
     private var feedModel: NewsModel
     
+    private var newCurrentPage = 0
+    
     var networkRequest: NetworkRequestProtocol?
     
     weak var delegate: ViewModelDelegate?
@@ -46,17 +48,25 @@ class FeedViewModel {
         return feedModel.data[index].image_url
     }
     
+    func returnCurrentPage() ->Int {
+        newCurrentPage += 1
+        return newCurrentPage
+    }
+    
+    func returnPerPage() -> Int {
+        return 10
+    }
+    
     // MARK: Request
     
     func request(endpoint: String){
         networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
-                    self?.feedModel = data
+                    self?.feedModel.data.append(contentsOf: data.data)
                     self?.delegate?.requestSucess()
                 case .failure(let error):
                     print(error)
-                    self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
             }
         })
     }

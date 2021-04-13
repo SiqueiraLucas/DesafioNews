@@ -1,18 +1,13 @@
 //
-//  NewsModel.swift
+//  NewsData.swift
 //  DesafioNews
 //
-//  Created by Lucas Siqueira on 11/04/21.
+//  Created by Lucas Siqueira on 13/04/21.
 //
 
 import Foundation
 
-struct NewsModel: Codable {
-    var data: [Datum] = []
-}
-
-// MARK: - Datum
-struct Datum: Codable {
+struct NewsData: Codable {
     var title: String
     var description: String
     var content: String
