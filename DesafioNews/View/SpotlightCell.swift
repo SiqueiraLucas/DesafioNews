@@ -11,8 +11,6 @@ class SpotlightCell: UICollectionViewCell {
     
     // MARK: Instance Properties
     
-    weak var delegate: CellDelegate?
-    
     lazy var tagline: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 12, weight: .bold))
@@ -59,15 +57,6 @@ class SpotlightCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var favoriteButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.contentMode = .scaleAspectFill
-        view.tintColor = .systemRed
-        view.addTarget(self, action: #selector(favoriteButtonAction(_:)), for: .touchUpInside)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     lazy var separator: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .quaternaryLabel
@@ -92,15 +81,6 @@ class SpotlightCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: Functions
-    
-    @objc func favoriteButtonAction(_ sender: Any) {
-        favoriteButton.isSelected = !favoriteButton.isSelected
-        let imageName = favoriteButton.isSelected ? "heart.fill" : "heart"
-        favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
-        delegate?.didTapFavorite(self)
-    }
 }
 
 // MARK: Extension
@@ -118,7 +98,6 @@ extension SpotlightCell: ViewCode {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(separator)
         contentView.addSubview(stackView)
-        contentView.addSubview(favoriteButton)
     }
 
     func configureConstraints() {
@@ -129,11 +108,6 @@ extension SpotlightCell: ViewCode {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            favoriteButton.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
-            favoriteButton.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.2),
-            favoriteButton.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.2)
             
         ])
         

@@ -33,6 +33,7 @@
 		7F54A3B42625621100A33F25 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54A3B32625621100A33F25 /* NewsData.swift */; };
 		7F54A3C4262576F600A33F25 /* SpotlightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54A3C3262576F600A33F25 /* SpotlightModel.swift */; };
 		7FBD39E126229D8100795C69 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD39E026229D8100795C69 /* SignupViewModel.swift */; };
+		7FC2DB192626737800A35204 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC2DB182626737800A35204 /* WebViewController.swift */; };
 		7FE7A35C26224B8900C05D75 /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */; };
 		7FE7A36126224BA800C05D75 /* MessagePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A36026224BA800C05D75 /* MessagePresenterProtocol.swift */; };
 		7FE7A36F2622600700C05D75 /* SigninInformationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */; };
@@ -84,6 +85,7 @@
 		7F54A3B32625621100A33F25 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
 		7F54A3C3262576F600A33F25 /* SpotlightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightModel.swift; sourceTree = "<group>"; };
 		7FBD39E026229D8100795C69 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		7FC2DB182626737800A35204 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
 		7FE7A36026224BA800C05D75 /* MessagePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenterProtocol.swift; sourceTree = "<group>"; };
 		7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninInformationContainer.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				7F1A661026214F4B00A6790C /* NewsViewController.swift */,
 				7F0227E92623889B0065AC98 /* NewsCollectionView.swift */,
 				7FFA368D2623EE11005D0361 /* NewsTabBarController.swift */,
+				7FC2DB182626737800A35204 /* WebViewController.swift */,
 				7FFA36912623F700005D0361 /* CustomNavigationController.swift */,
 			);
 			path = Controller;
@@ -505,6 +508,7 @@
 				7F0227D4262373200065AC98 /* SpotlightCell.swift in Sources */,
 				7FF87BB32624FEA10046BD05 /* FeedViewModel.swift in Sources */,
 				7F38AD102622306400B89DC2 /* SigninViewModel.swift in Sources */,
+				7FC2DB192626737800A35204 /* WebViewController.swift in Sources */,
 				7F54A3C4262576F600A33F25 /* SpotlightModel.swift in Sources */,
 				7F0227EA2623889B0065AC98 /* NewsCollectionView.swift in Sources */,
 				7FFA36922623F700005D0361 /* CustomNavigationController.swift in Sources */,

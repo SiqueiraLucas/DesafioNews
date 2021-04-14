@@ -71,18 +71,6 @@ class FeedViewModel {
         ]
     }
     
-    func returnFavoriteImageName(index: Int) -> String{
-        if feedModel.data[index].isFavorite ?? false{
-            return "heart.fill"
-        }else{
-            return "heart"
-        }
-    }
-    
-    func favorite(index: Int){
-        feedModel.data[index].isFavorite = true
-    }
-    
     // MARK: Request
     
     func request(endpoint: String, components: [URLQueryItem]?){

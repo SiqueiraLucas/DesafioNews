@@ -56,18 +56,6 @@ class SpotlightViewModel {
         return spotlightModel.data[index].image_url
     }
     
-    func returnFavoriteImageName(index: Int) -> String{
-        if spotlightModel.data[index].isFavorite ?? false{
-            return "heart.fill"
-        }else{
-            return "heart"
-        }
-    }
-    
-    func favorite(index: Int){
-        spotlightModel.data[index].isFavorite = true
-    }
-    
     // MARK: Request
     
     func request(endpoint: String, components: [URLQueryItem]?){
