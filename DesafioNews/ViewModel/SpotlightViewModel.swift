@@ -48,11 +48,16 @@ class SpotlightViewModel {
         return newDate
     }
     
+    func returnFavoriteIsHidden(index: Int) -> Bool {
+        let newsTitle = spotlightModel.data[index].title
+        return !UserDefaults.standard.bool(forKey: newsTitle)
+    }
+    
     func returnUrl(index: Int) -> String? {
         return spotlightModel.data[index].url
     }
     
-    func returnUrlImage(index: Int) -> String? {
+    func returnImageUrl(index: Int) -> String? {
         return spotlightModel.data[index].image_url
     }
     

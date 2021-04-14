@@ -11,7 +11,7 @@
 		7F00C79B2620CFE4002A1AA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C79A2620CFE4002A1AA8 /* AppDelegate.swift */; };
 		7F00C79D2620CFE4002A1AA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C79C2620CFE4002A1AA8 /* SceneDelegate.swift */; };
 		7F00C7A42620CFE5002A1AA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F00C7A32620CFE5002A1AA8 /* Assets.xcassets */; };
-		7F00C7BB2620D15B002A1AA8 /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7BA2620D15B002A1AA8 /* ViewCode.swift */; };
+		7F00C7BB2620D15B002A1AA8 /* ViewCodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7BA2620D15B002A1AA8 /* ViewCodeProtocol.swift */; };
 		7F00C7BF2620D26F002A1AA8 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7BE2620D26F002A1AA8 /* SigninView.swift */; };
 		7F00C7C22620D280002A1AA8 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7C12620D280002A1AA8 /* SignupView.swift */; };
 		7F00C7C62620D2A8002A1AA8 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00C7C52620D2A8002A1AA8 /* SigninViewController.swift */; };
@@ -34,6 +34,8 @@
 		7F54A3C4262576F600A33F25 /* SpotlightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54A3C3262576F600A33F25 /* SpotlightModel.swift */; };
 		7FBD39E126229D8100795C69 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD39E026229D8100795C69 /* SignupViewModel.swift */; };
 		7FC2DB192626737800A35204 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC2DB182626737800A35204 /* WebViewController.swift */; };
+		7FE2C7612626B424002C8C47 /* SharerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2C7602626B424002C8C47 /* SharerProtocol.swift */; };
+		7FE2C7652626B48F002C8C47 /* SharerLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2C7642626B48F002C8C47 /* SharerLink.swift */; };
 		7FE7A35C26224B8900C05D75 /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */; };
 		7FE7A36126224BA800C05D75 /* MessagePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A36026224BA800C05D75 /* MessagePresenterProtocol.swift */; };
 		7FE7A36F2622600700C05D75 /* SigninInformationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */; };
@@ -61,7 +63,7 @@
 		7F00C79C2620CFE4002A1AA8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7F00C7A32620CFE5002A1AA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F00C7A82620CFE5002A1AA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F00C7BA2620D15B002A1AA8 /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
+		7F00C7BA2620D15B002A1AA8 /* ViewCodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeProtocol.swift; sourceTree = "<group>"; };
 		7F00C7BE2620D26F002A1AA8 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
 		7F00C7C12620D280002A1AA8 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		7F00C7C52620D2A8002A1AA8 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,8 @@
 		7F54A3C3262576F600A33F25 /* SpotlightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightModel.swift; sourceTree = "<group>"; };
 		7FBD39E026229D8100795C69 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		7FC2DB182626737800A35204 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		7FE2C7602626B424002C8C47 /* SharerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharerProtocol.swift; sourceTree = "<group>"; };
+		7FE2C7642626B48F002C8C47 /* SharerLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharerLink.swift; sourceTree = "<group>"; };
 		7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
 		7FE7A36026224BA800C05D75 /* MessagePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenterProtocol.swift; sourceTree = "<group>"; };
 		7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninInformationContainer.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 			children = (
 				7F38AD0426221B3500B89DC2 /* NetworkRequest.swift */,
 				7FE7A35B26224B8900C05D75 /* MessagePresenter.swift */,
+				7FE2C7642626B48F002C8C47 /* SharerLink.swift */,
 				7FE7A35F26224B9200C05D75 /* Protocols */,
 			);
 			path = Utils;
@@ -246,7 +251,7 @@
 		7F00C7B82620D0E0002A1AA8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7F00C7BA2620D15B002A1AA8 /* ViewCode.swift */,
+				7F00C7BA2620D15B002A1AA8 /* ViewCodeProtocol.swift */,
 				7F1A660C26214E7600A6790C /* ViewControllerProtocol.swift */,
 			);
 			path = Protocols;
@@ -292,6 +297,7 @@
 			children = (
 				7F38AD172622333200B89DC2 /* NetworkRequestProtocol.swift */,
 				7FE7A36026224BA800C05D75 /* MessagePresenterProtocol.swift */,
+				7FE2C7602626B424002C8C47 /* SharerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				7FF87BAF2624F8410046BD05 /* FeedCell.swift in Sources */,
 				7F38AD182622333200B89DC2 /* NetworkRequestProtocol.swift in Sources */,
 				7FFA368E2623EE11005D0361 /* NewsTabBarController.swift in Sources */,
+				7FE2C7612626B424002C8C47 /* SharerProtocol.swift in Sources */,
 				7F1A660D26214E7600A6790C /* ViewControllerProtocol.swift in Sources */,
 				7FE7A36F2622600700C05D75 /* SigninInformationContainer.swift in Sources */,
 				7F00C7C62620D2A8002A1AA8 /* SigninViewController.swift in Sources */,
@@ -515,7 +522,8 @@
 				7F1A661126214F4B00A6790C /* NewsViewController.swift in Sources */,
 				7F00C79D2620CFE4002A1AA8 /* SceneDelegate.swift in Sources */,
 				7F0227EE2623A09F0065AC98 /* SpotlightViewModel.swift in Sources */,
-				7F00C7BB2620D15B002A1AA8 /* ViewCode.swift in Sources */,
+				7F00C7BB2620D15B002A1AA8 /* ViewCodeProtocol.swift in Sources */,
+				7FE2C7652626B48F002C8C47 /* SharerLink.swift in Sources */,
 				7F38AD0526221B3500B89DC2 /* NetworkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

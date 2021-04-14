@@ -44,7 +44,7 @@ class SigninInformationContainer: UIStackView {
 
 // MARK: Extension
 
-extension SigninInformationContainer: ViewCode {
+extension SigninInformationContainer: ViewCodeProtocol {
     func setupConfiguration() {
         translatesAutoresizingMaskIntoConstraints = false
     }

@@ -85,7 +85,7 @@ class NewsView: UIView {
 
 // MARK: Extension
 
-extension NewsView: ViewCode {
+extension NewsView: ViewCodeProtocol {
     func setupConfiguration() {
         backgroundColor = .white
     }

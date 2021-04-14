@@ -48,6 +48,17 @@ class FeedCell: UICollectionViewCell {
         return view
     }()
     
+    lazy var favoriteImageView: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = UIImage(systemName: "heart.fill")
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        view.contentMode = .scaleAspectFill
+        view.tintColor = .systemOrange
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var stackView: UIStackView = {
         let view = UIStackView(frame: .zero)
         view.axis = .vertical
@@ -72,7 +83,7 @@ class FeedCell: UICollectionViewCell {
 
 // MARK: Extension
 
-extension FeedCell: ViewCode {
+extension FeedCell: ViewCodeProtocol {
     func setupConfiguration() {
         backgroundColor = .white
     }
@@ -82,6 +93,7 @@ extension FeedCell: ViewCode {
         stackView.addArrangedSubview(subtitle)
         stackView.addArrangedSubview(date)
         contentView.addSubview(imageView)
+        contentView.addSubview(favoriteImageView)
         contentView.addSubview(stackView)
     }
 
@@ -92,6 +104,11 @@ extension FeedCell: ViewCode {
             imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            
+            favoriteImageView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -5),
+            favoriteImageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.3),
+            favoriteImageView.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.3),
+            favoriteImageView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -5),
 
             stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),

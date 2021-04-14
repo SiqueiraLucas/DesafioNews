@@ -11,9 +11,11 @@ class WebViewController: UIViewController {
     private let webView = WKWebView()
     private let urlString: String
     private let newsTitle: String
+    private var isFavorite = false
     private let shareButton = UIBarButtonItem(systemItem: .action)
     private let favoriteButton = UIBarButtonItem()
     private let fixedSpace = UIBarButtonItem(systemItem: .fixedSpace)
+    private var sharer: SharerProtocol?
     
     init(urlString: String, newsTitle: String) {
         self.urlString = urlString
@@ -34,11 +36,18 @@ class WebViewController: UIViewController {
     }
     
     @objc func favoriteButtonAction(sender: UIButton) {
-        print("opa favoritou")
+        if isFavorite{
+            UserDefaults.standard.removeObject(forKey: newsTitle)
+            favoriteButton.image = UIImage(systemName: "heart")
+        }else{
+            UserDefaults.standard.setValue(true, forKey: newsTitle)
+            favoriteButton.image = UIImage(systemName: "heart.fill")
+        }
+        isFavorite = !isFavorite
     }
     
     @objc func shareButtonAction(sender: UIButton) {
-        print("opa")
+        sharer?.share(urlString, on: self)
     }
 }
 
@@ -54,6 +63,12 @@ extension WebViewController: ViewControllerProtocol {
         guard let url = URL(string: urlString) else {return}
         let request = URLRequest(url: url)
         webView.load(request)
+        isFavorite = UserDefaults.standard.bool(forKey: newsTitle)
+        if isFavorite{
+            favoriteButton.image = UIImage(systemName: "heart.fill")
+        }else{
+            favoriteButton.image = UIImage(systemName: "heart")
+        }
     }
     
     func targetsSetup() {
@@ -64,7 +79,7 @@ extension WebViewController: ViewControllerProtocol {
     }
     
     func additionalSetup() {
-        favoriteButton.image = UIImage(systemName: "heart")
+        sharer = SharerLink()
         fixedSpace.width = UIScreen.main.bounds.width/3.3
         navigationItem.rightBarButtonItems = [shareButton, fixedSpace, favoriteButton]
     }

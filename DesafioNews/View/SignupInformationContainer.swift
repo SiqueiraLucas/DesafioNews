@@ -53,7 +53,7 @@ class SignupInformationContainer: UIStackView {
 
 // MARK: Extension
 
-extension SignupInformationContainer: ViewCode {
+extension SignupInformationContainer: ViewCodeProtocol {
     func setupConfiguration() {
         translatesAutoresizingMaskIntoConstraints = false
     }

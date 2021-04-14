@@ -54,8 +54,13 @@ class FeedViewModel {
         return feedModel.data[index].url
     }
     
-    func returnUrlImage(index: Int) -> String? {
+    func returnImageUrl(index: Int) -> String? {
         return feedModel.data[index].image_url
+    }
+    
+    func returnFavoriteIsHidden(index: Int) -> Bool {
+        let newsTitle = feedModel.data[index].title
+        return !UserDefaults.standard.bool(forKey: newsTitle)
     }
     
     private func returnCurrentPage() ->String {

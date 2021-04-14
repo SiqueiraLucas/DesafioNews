@@ -45,7 +45,7 @@ class SignupView: UIView {
 
 // MARK: Extension
 
-extension SignupView: ViewCode {
+extension SignupView: ViewCodeProtocol {
     func setupConfiguration() {
         backgroundColor = .white
     }

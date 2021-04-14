@@ -57,6 +57,17 @@ class SpotlightCell: UICollectionViewCell {
         return view
     }()
     
+    lazy var favoriteImageView: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = UIImage(systemName: "heart.fill")
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        view.contentMode = .scaleAspectFill
+        view.tintColor = .systemOrange
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var separator: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .quaternaryLabel
@@ -85,7 +96,7 @@ class SpotlightCell: UICollectionViewCell {
 
 // MARK: Extension
 
-extension SpotlightCell: ViewCode {
+extension SpotlightCell: ViewCodeProtocol {
     func setupConfiguration() {
         backgroundColor = .white
     }
@@ -98,6 +109,7 @@ extension SpotlightCell: ViewCode {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(separator)
         contentView.addSubview(stackView)
+        contentView.addSubview(favoriteImageView)
     }
 
     func configureConstraints() {
@@ -108,6 +120,11 @@ extension SpotlightCell: ViewCode {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            favoriteImageView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
+            favoriteImageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.2),
+            favoriteImageView.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.2),
+            favoriteImageView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
             
         ])
         

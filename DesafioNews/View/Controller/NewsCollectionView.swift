@@ -34,7 +34,8 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.title.text = spotlightViewModel.returnTitle(index: indexPath.row)
             cell.subtitle.text = spotlightViewModel.returnDescription(index: indexPath.row)
             cell.date.text = spotlightViewModel.returnDate(index: indexPath.row)
-            if let urlImage = spotlightViewModel.returnUrlImage(index: indexPath.row){
+            cell.favoriteImageView.isHidden = spotlightViewModel.returnFavoriteIsHidden(index: indexPath.row)
+            if let urlImage = spotlightViewModel.returnImageUrl(index: indexPath.row){
                 cell.imageView.sd_setImage(with: URL(string: urlImage), placeholderImage: UIImage(named: "spotlight\(indexPath.row).png"))
             }
             return cell
@@ -43,7 +44,8 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.title.text = feedViewModel.returnTitle(index: indexPath.row)
             cell.subtitle.text = feedViewModel.returnDescription(index: indexPath.row)
             cell.date.text = feedViewModel.returnDate(index: indexPath.row)
-            if let urlImage = feedViewModel.returnUrlImage(index: indexPath.row){
+            cell.favoriteImageView.isHidden = feedViewModel.returnFavoriteIsHidden(index: indexPath.row)
+            if let urlImage = feedViewModel.returnImageUrl(index: indexPath.row){
                 cell.imageView.sd_setImage(with: URL(string: urlImage), placeholderImage: UIImage(named: "feed\(indexPath.row).png"))
             }
             return cell

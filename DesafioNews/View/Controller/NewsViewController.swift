@@ -27,6 +27,10 @@ class NewsViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        newsView.collectionView.reloadData()
+    }
+    
     // MARK: Functions
     
     @objc func favoriteButtonAction(sender: UIButton) {
