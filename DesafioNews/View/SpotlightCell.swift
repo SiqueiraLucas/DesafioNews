@@ -22,7 +22,7 @@ class SpotlightCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let view = UILabel(frame: .zero)
-        view.font = UIFont.preferredFont(forTextStyle: .title1)
+        view.font = UIFont.preferredFont(forTextStyle: .title2)
         view.textColor = .label
         view.text = "Peixes aprendem a nadar"
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -31,9 +31,18 @@ class SpotlightCell: UICollectionViewCell {
     
     lazy var subtitle: UILabel = {
         let view = UILabel(frame: .zero)
-        view.font = UIFont.preferredFont(forTextStyle: .title2)
+        view.font = UIFont.preferredFont(forTextStyle: .title3)
         view.textColor = .secondaryLabel
         view.text = "Na água"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var date: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.text = "10/10/2020"
+        view.font = UIFont.preferredFont(forTextStyle: .caption1)
+        view.textColor = .tertiaryLabel
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -43,6 +52,7 @@ class SpotlightCell: UICollectionViewCell {
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
+        view.backgroundColor = .systemGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -84,6 +94,7 @@ extension SpotlightCell: ViewCode {
         stackView.addArrangedSubview(tagline)
         stackView.addArrangedSubview(title)
         stackView.addArrangedSubview(subtitle)
+        stackView.addArrangedSubview(date)
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(separator)
         contentView.addSubview(stackView)
@@ -96,11 +107,12 @@ extension SpotlightCell: ViewCode {
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
         ])
         
-        stackView.setCustomSpacing(10, after: separator)
-        stackView.setCustomSpacing(20, after: subtitle)
+        stackView.setCustomSpacing(15, after: imageView)
+        stackView.setCustomSpacing(2, after: subtitle)
+        stackView.setCustomSpacing(10, after: date)
     }
 }

@@ -11,6 +11,7 @@ class CustomNavigationController: UINavigationController{
     
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
+        rootViewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "")
         self.setup()
     }
     

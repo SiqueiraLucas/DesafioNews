@@ -12,7 +12,7 @@ class SignupViewController: UIViewController {
     // MARK: Instances
 
     private let signupView = SignupView(frame: UIScreen.main.bounds)
-    private var signupViewModel = SignupViewModel(apiRequest: APIRequestPost())
+    private var signupViewModel = SignupViewModel(networkRequest: NetworkRequest())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -42,7 +42,7 @@ class SignupViewController: UIViewController {
 extension SignupViewController: ViewControllerProtocol{
     
     func additionalSetup() {
-        self.title = "SIGN UP"
+        self.title = "Sign Up"
         messagePresenter = MessagePresenter()
     }
     

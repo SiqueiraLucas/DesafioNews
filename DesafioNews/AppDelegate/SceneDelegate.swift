@@ -15,13 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             
             let firstViewController = SigninViewController()
-            firstViewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             
             let navigation = CustomNavigationController(rootViewController: firstViewController)
             
             let window = UIWindow(windowScene: windowScene)
             window.overrideUserInterfaceStyle = .light
-            window.rootViewController = navigation
+            window.rootViewController = NewsTabBarController()
 
             self.window = window
             window.makeKeyAndVisible()

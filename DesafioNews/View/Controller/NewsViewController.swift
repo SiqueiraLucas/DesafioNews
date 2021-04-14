@@ -12,7 +12,8 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = SpotlightViewModel(model: SpotlightModel(), apiRequest: APIRequestGet())
+    let spotlightViewModel = SpotlightViewModel(model: NewsModel(), networkRequest: NetworkRequest())
+    let feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequest())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -28,7 +29,7 @@ class NewsViewController: UIViewController {
     
     // MARK: Functions
     
-    @objc func loginButtonAction(sender: UIButton!) {
+    @objc func favoriteButtonAction(sender: UIButton) {
         
     }
 
@@ -47,6 +48,7 @@ extension NewsViewController: ViewControllerProtocol{
         newsView.collectionView.delegate = self
         newsView.collectionView.dataSource = self
         spotlightViewModel.delegate = self
+        feedViewModel.delegate = self
         
     }
     
@@ -57,7 +59,10 @@ extension NewsViewController: ViewControllerProtocol{
     }
     
     func getContentSetup(){
-        spotlightViewModel.request(endpoint: "https://mesa-news-api.herokuapp.com/v1/client/news/highlights")
+        let endpointSpotlight = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
+        let endpointFeed = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=&per_page=&published_at="
+        spotlightViewModel.request(endpoint: endpointSpotlight, components: nil)
+        feedViewModel.request(endpoint: endpointFeed, components: feedViewModel.returnUrlComponents())
     }
 }
 

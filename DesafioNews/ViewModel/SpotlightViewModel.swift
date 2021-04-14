@@ -5,84 +5,69 @@
 //  Created by Lucas Siqueira on 11/04/21.
 //
 
-import UIKit
+import Foundation
 
 class SpotlightViewModel {
     
     //MARK: - Instances
     
-    private var spotlight: SpotlightModel
+    private var spotlightModel: NewsModel
     
-    private var images = [UIImage?]()
-    
-    var apiRequest: APIRequestGetProtocol?
+    var networkRequest: NetworkRequestProtocol?
     
     weak var delegate: ViewModelDelegate?
     
     var countItems : Int {
-        return spotlight.data.count
+        return spotlightModel.data.count
     }
     
     //MARK: Initializer
     
-    init (model: SpotlightModel, apiRequest: APIRequestGetProtocol){
-        self.spotlight = model
-        self.apiRequest = apiRequest
+    init (model: NewsModel, networkRequest: NetworkRequestProtocol){
+        self.spotlightModel = model
+        self.networkRequest = networkRequest
     }
     
     //MARK: Functions
     
     func returnTitle(index: Int) -> String?{
-        return spotlight.data[index].title
+        return spotlightModel.data[index].title
     }
     
     func returnDescription(index: Int) -> String?{
-        return spotlight.data[index].description
+        return spotlightModel.data[index].description
+    }
+    
+    func returnDate(index: Int) -> String?{
+        let date = spotlightModel.data[index].published_at
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        guard let dateFromString : Date = dateFormatter.date(from: date) else {return "10/10"}
+        dateFormatter.dateFormat = "dd/MM/yyy"
+        let newDate = dateFormatter.string(from: dateFromString)
+        return newDate
     }
     
     func returnUrl(index: Int) -> String? {
-        return spotlight.data[index].url
+        return spotlightModel.data[index].url
     }
     
-    func returnImage(index: Int) -> UIImage? {
-        if images.count > index{
-            return images[index]
-        }else{
-            return nil
-        }
-    }
-    
-    private func loadImages(){
-        images = [UIImage?] (repeating: nil, count: countItems-1)
-        for i in 0...countItems-1{
-            addImage(index: i)
-            if i == countItems-1{
-                delegate?.requestSucess()
-            }
-        }
-    }
-    
-    private func addImage(index: Int){
-        guard let url = URL(string: spotlight.data[index].image_url) else {return}
-        let data = try? Data(contentsOf: url)
-        guard let imageData = data else {return}
-        guard let image = UIImage(data: imageData) else {return}
-        images[index] = image
-        
+    func returnUrlImage(index: Int) -> String? {
+        return spotlightModel.data[index].image_url
     }
     
     // MARK: Request
     
-    func request(endpoint: String){
-        apiRequest?.getRequest(endpoint: endpoint) { [weak self] (result: Result<SpotlightModel, RequestError>) in
+    func request(endpoint: String, components: [URLQueryItem]?){
+        networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, components: components, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
-                    self?.spotlight = data
-                    self?.loadImages()
+                    self?.spotlightModel = data
+                    self?.delegate?.requestSucess()
                 case .failure(let error):
                     print(error)
                     self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
             }
-        }
+        })
     }
 }
