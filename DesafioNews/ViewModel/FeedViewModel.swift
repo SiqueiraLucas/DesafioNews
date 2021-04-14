@@ -25,9 +25,9 @@ class FeedViewModel {
     
     //MARK: Initializer
     
-    init (model: NewsModel, networkRequest: NetworkRequestProtocol){
+    init (model: NewsModel){
         self.feedModel = model
-        self.networkRequest = networkRequest
+        self.networkRequest = NetworkRequest()
     }
     
     //MARK: Functions
@@ -85,7 +85,7 @@ class FeedViewModel {
                     self?.feedModel.data.append(contentsOf: data.data)
                     self?.delegate?.requestSucess()
                 case .failure(let error):
-                    print("-------->\(error)")
+                    print(error)
             }
         })
     }

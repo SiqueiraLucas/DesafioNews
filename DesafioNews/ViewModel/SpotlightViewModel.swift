@@ -17,15 +17,17 @@ class SpotlightViewModel {
     
     weak var delegate: ViewModelDelegate?
     
+    var status = "Loading"
+    
     var countItems : Int {
         return spotlightModel.data.count
     }
     
     //MARK: Initializer
     
-    init (model: NewsModel, networkRequest: NetworkRequestProtocol){
+    init (model: NewsModel){
         self.spotlightModel = model
-        self.networkRequest = networkRequest
+        self.networkRequest = NetworkRequest()
     }
     
     //MARK: Functions
@@ -42,7 +44,7 @@ class SpotlightViewModel {
         let date = spotlightModel.data[index].published_at
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        guard let dateFromString : Date = dateFormatter.date(from: date) else {return "10/10"}
+        guard let dateFromString : Date = dateFormatter.date(from: date) else {return "10/10/2020"}
         dateFormatter.dateFormat = "dd/MM/yyy"
         let newDate = dateFormatter.string(from: dateFromString)
         return newDate
