@@ -13,7 +13,7 @@ class SignupInformationContainer: UIStackView {
     
     lazy var nameTextField: UITextField = {
         let view = UITextField(frame: .zero)
-        view.placeholder = "Nome"
+        view.placeholder = "Name"
         view.borderStyle = .roundedRect
         view.autocapitalizationType = .none
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class SignupInformationContainer: UIStackView {
     
     lazy var passwordTextField: UITextField = {
         let view = UITextField(frame: .zero)
-        view.placeholder = "Senha"
+        view.placeholder = "Password"
         view.borderStyle = .roundedRect
         view.isSecureTextEntry = true
         view.autocapitalizationType = .none

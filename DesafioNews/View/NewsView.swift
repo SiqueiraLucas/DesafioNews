@@ -26,8 +26,6 @@ class NewsView: UIView {
         view.startAnimating()
         return view
     }()
-    
-    let sections = [0,1]
 
     // MARK: Init
 
@@ -47,10 +45,8 @@ class NewsView: UIView {
              switch sectionNumber {
                 case 0:
                     return self.createSpotlightSection()
-                case 1:
-                    return self.createFeedSection()
                 default:
-                    return self.createSpotlightSection()
+                    return self.createFeedSection()
              }
         }
     }

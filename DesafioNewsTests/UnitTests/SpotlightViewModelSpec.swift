@@ -58,17 +58,17 @@ class SpotlightViewModelSpec: QuickSpec{
                     expect(imageUrl).to(equal("https://via.placeholder.com/600x300"))
                 }
             }
-        }
-        
-        //MARK: - Request Error
-        
-        describe("NetworkRequestError") {
-            let networkRequest = NetworkRequestMock()
-            sut.networkRequest = networkRequest
-            sut.request(endpoint: "None", components: nil)
             
-            it("Request Error") {
-                expect(networkRequest.status).to(equal("Invalid Url"))
+            //MARK: - Request Error
+            
+            context("NetworkRequestError") {
+                let networkRequest = NetworkRequestMock()
+                sut.networkRequest = networkRequest
+                sut.request(endpoint: "None", components: nil)
+                
+                it("Request Error") {
+                    expect(networkRequest.status).to(equal("Invalid Url"))
+                }
             }
         }
     }

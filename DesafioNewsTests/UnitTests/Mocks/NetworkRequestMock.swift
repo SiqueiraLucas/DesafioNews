@@ -16,7 +16,6 @@ class NetworkRequestMock: NetworkRequestProtocol{
         
         guard let url = Bundle.main.url(forResource: endpoint, withExtension: nil) else {
             status = "Invalid Url"
-            completionHandler(.failure(RequestError.notHTTPResponse))
             return
         }
 

@@ -14,12 +14,16 @@ class SigninViewSpec: QuickSpec{
     
     override func spec() {
         describe("SigninView") {
-            context("Elementos da SigninView"){
-                it("Estão posicionados corretamente") {
-                    let frame = CGRect(x: 0, y: 0, width: 375, height: 812)
-//                    let frame = CGRect(x: 0, y: 0, width: 320, height: 568)
-                    let view = SigninView(frame: frame)
-                    
+            context("Elements"){
+                let frame = CGRect(x: 0, y: 0, width: 375, height: 812)
+                let view = SigninView(frame: frame)
+                
+                it("InformationContainer") {
+                    let informationContainer = view.signinInformationContainer
+                    expect(informationContainer) == snapshot("SigninInformationContainer")
+                }
+                
+                it("AllElements") {
                     expect(view) == snapshot("SigninView")
                 }
             }

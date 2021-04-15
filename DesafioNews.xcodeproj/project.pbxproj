@@ -179,12 +179,12 @@
 			isa = PBXGroup;
 			children = (
 				7F00C7BE2620D26F002A1AA8 /* SigninView.swift */,
+				7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */,
+				7F00C7C12620D280002A1AA8 /* SignupView.swift */,
+				7F14B12926229847003FB146 /* SignupInformationContainer.swift */,
 				7F0227DD2623806A0065AC98 /* NewsView.swift */,
 				7F0227D3262373200065AC98 /* SpotlightCell.swift */,
 				7FF87BAE2624F8410046BD05 /* FeedCell.swift */,
-				7F00C7C12620D280002A1AA8 /* SignupView.swift */,
-				7FE7A36E2622600700C05D75 /* SigninInformationContainer.swift */,
-				7F14B12926229847003FB146 /* SignupInformationContainer.swift */,
 				7F00C7B42620D022002A1AA8 /* Controller */,
 				7F00C7B82620D0E0002A1AA8 /* Protocols */,
 			);
@@ -275,7 +275,6 @@
 		7F00C7D22620D3D9002A1AA8 /* DesafioNewsTests */ = {
 			isa = PBXGroup;
 			children = (
-				7F16DFE22627695700E2811A /* Mocks */,
 				7F1A65E12621414700A6790C /* UnitTests */,
 				7F1A65E22621415500A6790C /* UITests */,
 				7F00C7D52620D3D9002A1AA8 /* Info.plist */,
@@ -295,6 +294,7 @@
 		7F1A65E12621414700A6790C /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F16DFE22627695700E2811A /* Mocks */,
 				7F16DFF1262775E100E2811A /* SpotlightViewModelSpec.swift */,
 			);
 			path = UnitTests;
