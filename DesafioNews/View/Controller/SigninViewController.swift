@@ -12,7 +12,7 @@ class SigninViewController: UIViewController {
     // MARK: Instances
 
     private let signinView = SigninView(frame: UIScreen.main.bounds)
-    private var signinViewModel = SigninViewModel(networkRequest: NetworkRequest())
+    private var signinViewModel = SigninViewModel()
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -32,7 +32,7 @@ class SigninViewController: UIViewController {
         signinView.spinner.startAnimating()
         signinView.isUserInteractionEnabled = false
         signinView.alpha = 0.5
-        signinViewModel.sendValue(from: signinView.signinInformationContainer.emailTextField.text, passwordTextField: signinView.signinInformationContainer.passwordTextField.text)
+        signinViewModel.sendValue(emailTextField: signinView.signinInformationContainer.emailTextField.text, passwordTextField: signinView.signinInformationContainer.passwordTextField.text)
     }
     
     @objc func registerButtonAction(sender: UIButton) {

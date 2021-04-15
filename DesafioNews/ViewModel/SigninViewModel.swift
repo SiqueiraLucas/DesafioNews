@@ -7,23 +7,23 @@
 
 import Foundation
 
-struct SigninViewModel {
+class SigninViewModel {
     
     //MARK: - Instances
     
-    var networkRequest: NetworkRequestProtocol?
+    var networkRequest: NetworkRequestPostProtocol?
     
     weak var delegate: ViewModelDelegate?
     
     //MARK: Initializer
     
-    init (networkRequest: NetworkRequestProtocol){
-        self.networkRequest = networkRequest
+    init() {
+        self.networkRequest = NetworkRequestPost()
     }
     
     //MARK: Functions
     
-    func sendValue(from emailTextField: String?, passwordTextField: String?) {
+    func sendValue(emailTextField: String?, passwordTextField: String?) {
         guard let emailTextField = emailTextField else {return}
         guard let passwordTextField = passwordTextField else {return}
         let parameters = ["email": emailTextField, "password": passwordTextField]
@@ -35,18 +35,18 @@ struct SigninViewModel {
     // MARK: Request
     
     private func request(endpoint: String, parameters: [String: Any]){
-        networkRequest?.post(endpoint: endpoint, parameters: parameters, completionHandler: { (result) in
+        networkRequest?.post(endpoint: endpoint, parameters: parameters, completionHandler: { [weak self] (result) in
             switch result{
             case .success(_):
-                delegate?.requestSucess()
+                self?.delegate?.requestSucess()
             case .failure(let error):
                 switch error {
                     case .invalidHTTPResponse(_):
-                        delegate?.requestError(errorMessage: "Email ou senha incorretos!")
+                        self?.delegate?.requestError(errorMessage: "Email ou senha incorretos!")
                     case .networkError(_):
-                        delegate?.requestError(errorMessage: "Sem conexão com a internet!")
+                        self?.delegate?.requestError(errorMessage: "Sem conexão com a internet!")
                     default:
-                        delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
+                        self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
                 }
             }
         })

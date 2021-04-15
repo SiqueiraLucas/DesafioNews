@@ -1,47 +1,45 @@
 //
-//  SpotlightViewModel.swift
+//  NewsViewModel.swift
 //  DesafioNews
 //
-//  Created by Lucas Siqueira on 11/04/21.
+//  Created by Lucas Siqueira on 14/04/21.
 //
 
 import Foundation
 
-class SpotlightViewModel {
+class NewsViewModel {
     
     //MARK: - Instances
     
-    private var spotlightModel: NewsModel
+    private var newsModel: NewsModel
     
-    var networkRequest: NetworkRequestProtocol?
+    var networkRequest: NetworkRequestGetProtocol?
     
     weak var delegate: ViewModelDelegate?
     
-    var status = "Loading"
-    
     var countItems : Int {
-        return spotlightModel.data.count
+        return newsModel.data.count
     }
     
     //MARK: Initializer
     
     init (model: NewsModel){
-        self.spotlightModel = model
-        self.networkRequest = NetworkRequest()
+        self.newsModel = model
+        self.networkRequest = NetworkRequestGet()
     }
     
     //MARK: Functions
     
     func returnTitle(index: Int) -> String?{
-        return spotlightModel.data[index].title
+        return newsModel.data[index].title
     }
     
     func returnDescription(index: Int) -> String?{
-        return spotlightModel.data[index].description
+        return newsModel.data[index].description
     }
     
     func returnDate(index: Int) -> String?{
-        let date = spotlightModel.data[index].published_at
+        let date = newsModel.data[index].published_at
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         guard let dateFromString : Date = dateFormatter.date(from: date) else {return "10/10/2020"}
@@ -51,16 +49,16 @@ class SpotlightViewModel {
     }
     
     func returnFavoriteIsHidden(index: Int) -> Bool {
-        let newsTitle = spotlightModel.data[index].title
+        let newsTitle = newsModel.data[index].title
         return !UserDefaults.standard.bool(forKey: newsTitle)
     }
     
     func returnUrl(index: Int) -> String? {
-        return spotlightModel.data[index].url
+        return newsModel.data[index].url
     }
     
     func returnImageUrl(index: Int) -> String? {
-        return spotlightModel.data[index].image_url
+        return newsModel.data[index].image_url
     }
     
     // MARK: Request
@@ -69,7 +67,7 @@ class SpotlightViewModel {
         networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, components: components, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
-                    self?.spotlightModel = data
+                    self?.newsModel = data
                     self?.delegate?.requestSucess()
                 case .failure(let error):
                     print(error)

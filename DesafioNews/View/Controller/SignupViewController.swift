@@ -12,7 +12,7 @@ class SignupViewController: UIViewController {
     // MARK: Instances
 
     private let signupView = SignupView(frame: UIScreen.main.bounds)
-    private var signupViewModel = SignupViewModel(networkRequest: NetworkRequest())
+    private var signupViewModel = SignupViewModel()
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle

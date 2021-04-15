@@ -1,20 +1,21 @@
 //
-//  NetworkRequestMock.swift
+//  NetworkRequestGetMock.swift
 //  DesafioNewsTests
 //
-//  Created by Lucas Siqueira on 14/04/21.
+//  Created by Lucas Siqueira on 15/04/21.
 //
 
 @testable import DesafioNews
 import Foundation
 
-class NetworkRequestMock: NetworkRequestProtocol{
+class NetworkRequestGetMock: NetworkRequestGetProtocol{
     
     var status = "Loading"
     
     func get<T: Codable>(resource: T.Type, endpoint: String, components: [URLQueryItem]?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
         
         guard let url = Bundle.main.url(forResource: endpoint, withExtension: nil) else {
+            completionHandler(.failure(.invalidHTTPResponse(404)))
             status = "Invalid Url"
             return
         }
@@ -32,10 +33,5 @@ class NetworkRequestMock: NetworkRequestProtocol{
             status = "Parse Error"
         }
     }
-    
-    func post(endpoint: String, parameters: [String : Any], completionHandler: @escaping (Result<Any?, RequestError>) -> Void) {
-        
-    }
-    
     
 }

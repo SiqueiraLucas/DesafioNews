@@ -12,7 +12,7 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = SpotlightViewModel(model: NewsModel())
+    let spotlightViewModel = NewsViewModel(model: NewsModel())
     let feedViewModel = FeedViewModel(model: NewsModel())
     private var messagePresenter: MessagePresenterProtocol?
 
