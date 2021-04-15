@@ -9,7 +9,6 @@ import Foundation
 
 protocol ViewControllerProtocol {
     func setup()
-    func closureSetup()
     func delegateSetup()
     func getContentSetup()
     func targetsSetup()
@@ -18,7 +17,6 @@ protocol ViewControllerProtocol {
 
 extension ViewControllerProtocol{
     func setup(){
-        closureSetup()
         delegateSetup()
         getContentSetup()
         targetsSetup()

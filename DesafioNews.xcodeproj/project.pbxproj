@@ -258,6 +258,7 @@
 				7FFA368D2623EE11005D0361 /* NewsTabBarController.swift */,
 				7FC2DB182626737800A35204 /* WebViewController.swift */,
 				7FFA36912623F700005D0361 /* CustomNavigationController.swift */,
+				7F5E5AAF2628574800CB37B4 /* Protocols */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				7F00C7BA2620D15B002A1AA8 /* ViewCodeProtocol.swift */,
-				7F1A660C26214E7600A6790C /* ViewControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -329,6 +329,14 @@
 				7F0227D7262378A60065AC98 /* NewsViewSpec.swift */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		7F5E5AAF2628574800CB37B4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7F1A660C26214E7600A6790C /* ViewControllerProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		7FE7A35F26224B9200C05D75 /* Protocols */ = {

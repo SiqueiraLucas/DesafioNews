@@ -57,13 +57,8 @@ extension SignupViewController: ViewControllerProtocol{
         signupView.registerButton.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
     }
     
-    func closureSetup()  {
-        
-    }
+    func getContentSetup(){}
     
-    func getContentSetup(){
-        
-    }
 }
 
 // MARK: - View Model Delegate

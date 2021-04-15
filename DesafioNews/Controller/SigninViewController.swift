@@ -73,13 +73,7 @@ extension SigninViewController: ViewControllerProtocol{
         signinView.registerButton.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
     }
     
-    func closureSetup()  {
-        
-    }
-    
-    func getContentSetup(){
-        
-    }
+    func getContentSetup(){}
     
 }
 

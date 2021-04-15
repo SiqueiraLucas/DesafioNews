@@ -52,12 +52,6 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: ViewControllerProtocol {
-    func closureSetup() {
-        
-    }
-    
-    func delegateSetup() {
-    }
     
     func getContentSetup() {
         guard let url = URL(string: urlString) else {return}
@@ -84,5 +78,6 @@ extension WebViewController: ViewControllerProtocol {
         navigationItem.rightBarButtonItems = [shareButton, fixedSpace, favoriteButton]
     }
     
+    func delegateSetup() {}
     
 }
