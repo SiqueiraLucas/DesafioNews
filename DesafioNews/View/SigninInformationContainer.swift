@@ -22,7 +22,7 @@ class SigninInformationContainer: UIStackView {
     
     lazy var passwordTextField: UITextField = {
         let view = UITextField(frame: .zero)
-        view.placeholder = "Senha"
+        view.placeholder = "Password"
         view.borderStyle = .roundedRect
         view.isSecureTextEntry = true
         view.autocapitalizationType = .none

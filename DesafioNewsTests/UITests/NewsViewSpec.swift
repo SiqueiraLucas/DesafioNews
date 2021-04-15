@@ -14,17 +14,15 @@ class NewsViewSpec: QuickSpec{
     
     override func spec() {
         describe("NewsView") {
-            context("Elementos da SpotlightCell"){
-                it("Estão posicionados corretamente") {
+            context("Elements"){
+                it("SpotlightCell") {
                     let frame = CGRect(x: 0, y: 0, width: 375, height: 300)
                     let view = SpotlightCell(frame: frame)
                     
                     expect(view) == snapshot("SpotlightCell")
                 }
-            }
-            
-            context("Elementos da FeedCell"){
-                it("Estão posicionados corretamente") {
+                
+                it("FeedCell") {
                     let frame = CGRect(x: 0, y: 0, width: 375, height: 100)
                     let view = FeedCell(frame: frame)
                     

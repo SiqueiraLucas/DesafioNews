@@ -12,8 +12,8 @@ class SigninViewController: UIViewController {
     // MARK: Instances
 
     private let signinView = SigninView(frame: UIScreen.main.bounds)
-    private var signinViewModel = SigninViewModel(networkRequest: NetworkRequest())
-    private var messagePresenter: MessagePresenterProtocol?
+    private var signinViewModel = SigninViewModel()
+    var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
 
@@ -28,34 +28,27 @@ class SigninViewController: UIViewController {
     
     // MARK: Functions
     
-    @objc func loginButtonAction(sender: UIButton) {
+    @objc func loginButtonAction(sender: UIButton?) {
         signinView.spinner.startAnimating()
         signinView.isUserInteractionEnabled = false
         signinView.alpha = 0.5
-        signinViewModel.sendValue(from: signinView.signinInformationContainer.emailTextField.text, passwordTextField: signinView.signinInformationContainer.passwordTextField.text)
+        signinViewModel.sendValue(emailTextField: signinView.signinInformationContainer.emailTextField.text, passwordTextField: signinView.signinInformationContainer.passwordTextField.text)
     }
     
-    @objc func registerButtonAction(sender: UIButton) {
+    @objc func registerButtonAction(sender: UIButton?) {
         navigationController?.pushViewController(SignupViewController(), animated: true)
     }
     
+    func displayAlert(message: String){
+        messagePresenter?.presentMessage(message, on: self)
+    }
+    
     func showViewController(viewController: UIViewController){
-//        self.removeFromParent()
-//        navigationController?.removeFromParent()
-//        guard let sceneDelegate = UIApplication.shared.connectedScenes
-//                .first?.delegate as? SceneDelegate else {return}
-//        let tabBarController = NewsTabBarController()
-//        sceneDelegate.window?.rootViewController = tabBarController
-//        sceneDelegate.window?.makeKeyAndVisible()
-        
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true, completion: {
             self.navigationController?.removeFromParent()
             self.removeFromParent()
         })
-        
-//        self.navigationController?.setViewControllers([viewController], animated: true)
-//        self.removeFromParent()
     }
 
 }
@@ -105,7 +98,7 @@ extension SigninViewController: ViewModelDelegate{
             self.signinView.isUserInteractionEnabled = true
             self.signinView.alpha = 1
             self.signinView.spinner.stopAnimating()
-            self.messagePresenter?.presentMessage(errorMessage, on: self)
+            self.displayAlert(message: errorMessage)
         }
     }
     

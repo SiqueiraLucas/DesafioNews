@@ -12,8 +12,8 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = SpotlightViewModel(model: NewsModel(), networkRequest: NetworkRequest())
-    let feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequest())
+    let spotlightViewModel = NewsViewModel(model: NewsModel())
+    let feedViewModel = FeedViewModel(model: NewsModel())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle

@@ -7,10 +7,11 @@
 
 import Foundation
 
-protocol NetworkRequestProtocol {
-    
+protocol NetworkRequestGetProtocol {
     func get<T: Codable> (resource: T.Type, endpoint: String, components: [URLQueryItem]?, completionHandler: @escaping (_ result: Result<T, RequestError>) -> Void)
-    
+}
+
+protocol NetworkRequestPostProtocol {
     func post(endpoint: String, parameters: [String: Any],
                      completionHandler: @escaping (_ result: Result<Any?, RequestError>) -> Void)
 }
