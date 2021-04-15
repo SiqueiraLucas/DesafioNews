@@ -67,11 +67,10 @@ class NewsViewModel {
         networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, components: components, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
-                    self?.newsModel = data
+                    self?.newsModel.data.append(contentsOf: data.data)
                     self?.delegate?.requestSucess()
                 case .failure(let error):
                     print(error)
-                    self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
             }
         })
     }

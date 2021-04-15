@@ -24,36 +24,36 @@ class NewsViewModelSpec: QuickSpec{
                 sut.networkRequest = networkRequest
                 sut.request(endpoint: "NewsJson.json", components: nil)
                 
-                it("Request Sucess") {
+                it("should request Sucess") {
                     expect(networkRequest.status).to(equal("Sucess"))
                 }
                 
-                it("Return Correct Title") {
+                it("should return Correct Title") {
                     let title = sut.returnTitle(index: 0)
                     expect(title).to(equal("News 1 title"))
                 }
                 
-                it("Return Correct Description") {
+                it("should return Correct Description") {
                     let description = sut.returnDescription(index: 0)
                     expect(description).to(equal("News 1 description"))
                 }
                 
-                it("Return Correct Date") {
+                it("should return Correct Date") {
                     let date = sut.returnDate(index: 0)
                     expect(date).to(equal("30/01/2020"))
                 }
                 
-                it("Return Favorite Is Hidden") {
+                it("should return Favorite Is Hidden") {
                     let isHidden = sut.returnFavoriteIsHidden(index: 0)
                     expect(isHidden).to(equal(true))
                 }
                 
-                it("Return Url") {
+                it("should return Url") {
                     let url = sut.returnUrl(index: 0)
                     expect(url).to(equal("https://fake.news"))
                 }
                 
-                it("Return Image Url") {
+                it("should return Image Url") {
                     let imageUrl = sut.returnImageUrl(index: 0)
                     expect(imageUrl).to(equal("https://via.placeholder.com/600x300"))
                 }
@@ -66,7 +66,7 @@ class NewsViewModelSpec: QuickSpec{
                 sut.networkRequest = networkRequest
                 sut.request(endpoint: "None", components: nil)
                 
-                it("Request Error") {
+                it("should request error") {
                     expect(networkRequest.status).to(equal("Invalid Url"))
                 }
             }
