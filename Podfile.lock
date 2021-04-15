@@ -1,0 +1,41 @@
+PODS:
+  - iOSSnapshotTestCase (6.2.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 6.2.0)
+  - iOSSnapshotTestCase/Core (6.2.0)
+  - iOSSnapshotTestCase/SwiftSupport (6.2.0):
+    - iOSSnapshotTestCase/Core
+  - Nimble (9.0.0)
+  - Nimble-Snapshots (9.1.0):
+    - Nimble-Snapshots/Core (= 9.1.0)
+  - Nimble-Snapshots/Core (9.1.0):
+    - iOSSnapshotTestCase (~> 6.0)
+    - Nimble
+  - Quick (3.1.2)
+  - SDWebImage (5.11.0):
+    - SDWebImage/Core (= 5.11.0)
+  - SDWebImage/Core (5.11.0)
+
+DEPENDENCIES:
+  - Nimble
+  - Nimble-Snapshots
+  - Quick
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - iOSSnapshotTestCase
+    - Nimble
+    - Nimble-Snapshots
+    - Quick
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
+  Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  Nimble-Snapshots: 6605431525245f967ca9d558bb12a49da3d040e3
+  Quick: 60f0ea3b8e0cfc0df3259a5c06a238ad8b3c46e0
+  SDWebImage: 7acbb57630ac7db4a495547fb73916ff3e432f6b
+
+PODFILE CHECKSUM: 82e9593b232af8cc0eafdb4e8342728e0cc05c1d
+
+COCOAPODS: 1.8.4
