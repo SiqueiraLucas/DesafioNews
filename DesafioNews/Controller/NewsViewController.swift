@@ -12,8 +12,8 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = NewsViewModel(model: NewsModel())
-    let feedViewModel = FeedViewModel(model: NewsModel())
+    let spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
+    let feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -80,9 +80,6 @@ extension NewsViewController: ViewModelDelegate{
         DispatchQueue.main.async {
             self.messagePresenter?.presentMessage(errorMessage, on: self)
         }
-    }
-    
-    func getInformationBack() {
     }
     
 }

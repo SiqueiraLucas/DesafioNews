@@ -15,17 +15,16 @@ class NewsViewModelSpec: QuickSpec{
         
         describe("SpotlightViewModel") {
             
-            let sut = NewsViewModel(model: NewsModel())
+            let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGetMock())
+            let networkRequest = sut.networkRequest as? NetworkRequestGetMock
             
             //MARK: - Request Sucess
             
             context("NetworkRequestSucess") {
-                let networkRequest = NetworkRequestGetMock()
-                sut.networkRequest = networkRequest
                 sut.request(endpoint: "NewsJson.json", components: nil)
                 
                 it("should request Sucess") {
-                    expect(networkRequest.status).to(equal("Sucess"))
+                    expect(networkRequest?.status).to(equal("Sucess"))
                 }
                 
                 it("should return Correct Title") {
@@ -56,6 +55,11 @@ class NewsViewModelSpec: QuickSpec{
                 it("should return Image Url") {
                     let imageUrl = sut.returnImageUrl(index: 0)
                     expect(imageUrl).to(equal("https://via.placeholder.com/600x300"))
+                }
+                
+                it("should return countItems") {
+                    let countItems = sut.countItems
+                    expect(countItems).to(equal(2))
                 }
             }
             

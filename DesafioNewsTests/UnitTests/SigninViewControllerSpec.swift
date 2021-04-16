@@ -7,6 +7,7 @@
 
 import Quick
 import Nimble
+import XCTest
 @testable import DesafioNews
 
 class SigninViewControllerSpec: QuickSpec {
@@ -25,18 +26,6 @@ class SigninViewControllerSpec: QuickSpec {
                 }
             }
             
-            context("displayAlert") {
-                let messagePresenter = MessagePresenterMock()
-                sut.messagePresenter = messagePresenter
-                sut.displayAlert(message: "Message")
-
-                it("should displayed message") {
-                    expect(messagePresenter.presentCalled).to(be(true))
-                    expect(messagePresenter.message).to(equal("Message"))
-                    expect(messagePresenter.viewController == sut).to(be(true))
-                }
-            }
-            
             context("loginButtonAction") {
                 sut.loginButtonAction(sender: nil)
                 let viewAlpha = sut.view.alpha
@@ -50,11 +39,63 @@ class SigninViewControllerSpec: QuickSpec {
                 }
             }
             
+            context("displayAlertError") {
+                let messagePresenter = MessagePresenterMock()
+                sut.messagePresenter = messagePresenter
+                sut.messagePresenter?.presentMessage("", on: sut)
+                sut.requestError(errorMessage: "Error message")
+
+                it("should displayed message") {
+                    expect(messagePresenter.presentCalled).toEventually(be(true))
+                    expect(messagePresenter.message).toEventually(equal("Error message"))
+                    expect(messagePresenter.viewController == sut).toEventually(be(true))
+                }
+            }
+            
             context("registerButtonAction") {
-                sut.registerButtonAction(sender: nil)
+                let controllerPresenter = ViewControllerPresenterMock()
+                sut.viewControllerPresenter = controllerPresenter
                 
                 it("should show signup view") {
                     expect(sut.navigationController != nil).to(be(true))
+                }
+            }
+            
+            context("should show new ViewController") {
+                let controllerPresenter = ViewControllerPresenterMock()
+                sut.viewControllerPresenter = controllerPresenter
+
+                it("should show SignupViewController") {
+                    sut.registerButtonAction(sender: nil)
+
+                    expect(controllerPresenter.presentCalled).to(be(true))
+                    expect(controllerPresenter.fromViewController).to(equal(sut))
+                    expect(controllerPresenter.toViewController).to(beAKindOf(SignupViewController.self))
+                }
+                
+                it("should show NewsTabBarController") {
+                    sut.requestSucess()
+                    
+                    expect(controllerPresenter.presentCalled).toEventually(beTrue())
+                    expect(controllerPresenter.fromViewController).toEventually(beNil())
+                    expect(controllerPresenter.toViewController).toEventually(beAKindOf(NewsTabBarController.self))
+                }
+            }
+            
+            context("text field") {
+                let textField = UITextField()
+                textField.delegate = sut
+                textField.becomeFirstResponder()
+
+                it("should hide") {
+                    let isHidden = sut.textFieldShouldReturn(textField)
+                    expect(isHidden).to(be(true))
+                }
+                
+                it("should limit 35") {
+                    let textString = "123456789012345678901234567890123456"
+                    let limit = sut.textField(textField, shouldChangeCharactersIn: NSRange(), replacementString: textString)
+                    expect(limit).to(equal(false))
                 }
             }
         }

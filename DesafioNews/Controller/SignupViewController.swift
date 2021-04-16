@@ -12,7 +12,7 @@ class SignupViewController: UIViewController {
     // MARK: Instances
 
     private let signupView = SignupView(frame: UIScreen.main.bounds)
-    private var signupViewModel = SignupViewModel()
+    private var signupViewModel = SignupViewModel(networkRequest: NetworkRequestPost())
     private var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
@@ -79,9 +79,6 @@ extension SignupViewController: ViewModelDelegate{
             self.signupView.spinner.stopAnimating()
             self.messagePresenter?.presentMessage(errorMessage, on: self)
         }
-    }
-    
-    func getInformationBack() {
     }
     
 }
