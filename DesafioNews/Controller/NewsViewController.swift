@@ -53,7 +53,6 @@ extension NewsViewController: ViewControllerProtocol{
         newsView.collectionView.dataSource = self
         spotlightViewModel.delegate = self
         feedViewModel.delegate = self
-        
     }
     
     func getContentSetup(){

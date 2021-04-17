@@ -113,8 +113,6 @@ extension FeedCell: ViewCodeProtocol {
             stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
             stackView.topAnchor.constraint(equalTo: imageView.topAnchor),
-            
         ])
-        
     }
 }

@@ -13,12 +13,10 @@ class SignupViewModelSpec: QuickSpec{
     
     override func spec() {
         
-        describe("SignupViewModel") {
-            
-            let sut = SignupViewModel(networkRequest: NetworkRequestPostMock())
+        let sut = SignupViewModel(networkRequest: NetworkRequestPostMock())
+        
+        describe("NetworkRequest") {
             let networkRequest = sut.networkRequest as? NetworkRequestPostMock
-            
-            //MARK: - Request Sucess
             
             context("NetworkRequestSucess") {
                 sut.sendValue(nameTextField: "L", emailTextField: "lucas@teste.com", passwordTextField: "123")

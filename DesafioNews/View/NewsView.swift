@@ -90,7 +90,5 @@ extension NewsView: ViewCodeProtocol {
         addSubview(collectionView)
     }
 
-    func configureConstraints() {
-        
-    }
+    func configureConstraints() {}
 }
