@@ -11,9 +11,9 @@ class SignupViewController: UIViewController {
 
     // MARK: Instances
 
-    private let signupView = SignupView(frame: UIScreen.main.bounds)
-    private var signupViewModel = SignupViewModel(networkRequest: NetworkRequestPost())
-    private var messagePresenter: MessagePresenterProtocol?
+    let signupView = SignupView(frame: UIScreen.main.bounds)
+    var signupViewModel = SignupViewModel(networkRequest: NetworkRequestPost())
+    var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
 
@@ -28,7 +28,7 @@ class SignupViewController: UIViewController {
     
     // MARK: Functions
     
-    @objc func registerButtonAction(sender: UIButton) {
+    @objc func registerButtonAction(sender: UIButton?) {
         signupView.spinner.startAnimating()
         signupView.isUserInteractionEnabled = false
         signupView.alpha = 0.5

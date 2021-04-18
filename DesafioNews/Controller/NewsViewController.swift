@@ -14,7 +14,7 @@ class NewsViewController: UIViewController {
     let newsView = NewsView(frame: UIScreen.main.bounds)
     let spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
     let feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
-    private var messagePresenter: MessagePresenterProtocol?
+    var messagePresenter: MessagePresenterProtocol?
 
     // MARK: Life Cycle
 
@@ -29,12 +29,6 @@ class NewsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         newsView.collectionView.reloadData()
-    }
-    
-    // MARK: Functions
-    
-    @objc func favoriteButtonAction(sender: UIButton) {
-        
     }
 
 }
