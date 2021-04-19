@@ -20,10 +20,10 @@ class SigninViewControllerSpec: QuickSpec {
         describe("Functions") {
             
             context("loginButtonAction") {
-                sut.loginButtonAction(sender: nil)
-                let viewAlpha = sut.view.alpha
-                
                 it("should disable interaction") {
+                    sut.loginButtonAction(sender: nil)
+                    let viewAlpha = sut.view.alpha
+                    
                     expect(viewAlpha).to(equal(0.5))
                     expect(sut.view.isUserInteractionEnabled).to(beFalse())
                     expect(sut.signinView.spinner.isAnimating).to(beTrue())
@@ -91,6 +91,7 @@ class SigninViewControllerSpec: QuickSpec {
             }
             
             context("requestError") {
+                let sut = SigninViewController()
                 let messagePresenter = MessagePresenterMock()
                 sut.messagePresenter = messagePresenter
                 sut.requestError(errorMessage: "Error message")

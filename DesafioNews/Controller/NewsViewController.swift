@@ -12,9 +12,10 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
-    let feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
+    var spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
+    var feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
     var messagePresenter: MessagePresenterProtocol?
+    var viewControllerPresenter: ViewControllerPresenterProtocol?
 
     // MARK: Life Cycle
 
@@ -40,6 +41,7 @@ extension NewsViewController: ViewControllerProtocol{
     func additionalSetup() {
         self.title = "News"
         messagePresenter = MessagePresenter()
+        viewControllerPresenter = ViewControllerPresenter()
     }
     
     func delegateSetup() {

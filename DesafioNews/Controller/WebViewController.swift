@@ -8,14 +8,14 @@
 import WebKit
 
 class WebViewController: UIViewController {
-    private let webView = WKWebView()
-    private let urlString: String
-    private let newsTitle: String
-    private var isFavorite = false
-    private let shareButton = UIBarButtonItem(systemItem: .action)
-    private let favoriteButton = UIBarButtonItem()
-    private let fixedSpace = UIBarButtonItem(systemItem: .fixedSpace)
-    private var sharer: SharerProtocol?
+    let webView = WKWebView()
+    let urlString: String
+    let newsTitle: String
+    var isFavorite = false
+    let shareButton = UIBarButtonItem(systemItem: .action)
+    let favoriteButton = UIBarButtonItem()
+    let fixedSpace = UIBarButtonItem(systemItem: .fixedSpace)
+    var sharer: SharerProtocol?
     
     init(urlString: String, newsTitle: String) {
         self.urlString = urlString
