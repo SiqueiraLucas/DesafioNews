@@ -102,6 +102,27 @@ class NewsCollectionViewSpec: QuickSpec {
                     expect(webController.urlString).to(equal("www.modelUrl"))
                 }
             }
+            
+            //MARK: Will Display Cell
+            
+            context("willDisplayCell") {
+                guard let cell = sut.newsView.collectionView.dequeueReusableCell(withReuseIdentifier: "SpotlightCell", for: IndexPath(row: 0, section: 1)) as? SpotlightCell else {
+                    expect(false).to(beTrue())
+                    return
+                }
+                let networkRequest = NetworkRequestGetMock()
+                sut.feedViewModel.networkRequest = networkRequest
+                sut.collectionView(sut.newsView.collectionView, willDisplay: cell, forItemAt: IndexPath(row: -8, section: 1))
+                let isAnimating = sut.newsView.activityIndicator.isAnimating
+                
+                it("should stop animation activityIndicator") {
+                    expect(isAnimating).to(beFalse())
+                }
+                
+                it("should request new data") {
+                    expect(networkRequest.requestCalled).to(beTrue())
+                }
+            }
         }
     }
 

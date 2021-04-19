@@ -82,13 +82,4 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    // MARK: Open Url
-    
-    func openUrl(urlString: String){
-        if let url = URL(string: urlString) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    
 }
