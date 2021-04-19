@@ -68,22 +68,24 @@ extension SigninView: ViewCodeProtocol {
     }
 
     func configureConstraints() {
-        signinInformationContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -20).isActive = true
-        signinInformationContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        signinInformationContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
-        signinInformationContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
-        
-        loginButton.topAnchor.constraint(equalTo: signinInformationContainer.bottomAnchor, constant: 30).isActive = true
-        loginButton.widthAnchor.constraint(equalTo: signinInformationContainer.widthAnchor).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        loginButton.centerXAnchor.constraint(equalTo: signinInformationContainer.centerXAnchor).isActive = true
-        
-        registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
-        registerButton.widthAnchor.constraint(equalTo: loginButton.widthAnchor).isActive = true
-        registerButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor).isActive = true
-        registerButton.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor).isActive = true
-        
-        spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            signinInformationContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -20),
+            signinInformationContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            signinInformationContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
+            signinInformationContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
+            
+            loginButton.topAnchor.constraint(equalTo: signinInformationContainer.bottomAnchor, constant: 30),
+            loginButton.widthAnchor.constraint(equalTo: signinInformationContainer.widthAnchor),
+            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.centerXAnchor.constraint(equalTo: signinInformationContainer.centerXAnchor),
+            
+            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
+            registerButton.widthAnchor.constraint(equalTo: loginButton.widthAnchor),
+            registerButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
+            registerButton.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
+            
+            spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkRequestPost: NetworkRequestPostProtocol{
+struct NetworkRequestPost: NetworkRequestPostProtocol{
     
     func post(endpoint: String, parameters: [String : Any], completionHandler: @escaping (Result<Any?, RequestError>) -> Void) {
         

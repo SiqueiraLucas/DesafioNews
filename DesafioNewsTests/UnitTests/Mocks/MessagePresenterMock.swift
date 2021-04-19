@@ -15,7 +15,7 @@ class MessagePresenterMock: MessagePresenterProtocol {
     var viewController: UIViewController?
     
     func presentMessage(_ message: String, on viewController: UIViewController) {
-        presentCalled = true
+        self.presentCalled = true
         self.message = message
         self.viewController = viewController
     }

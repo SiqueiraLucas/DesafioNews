@@ -11,9 +11,10 @@ class SigninViewController: UIViewController {
 
     // MARK: Instances
 
-    private let signinView = SigninView(frame: UIScreen.main.bounds)
-    private var signinViewModel = SigninViewModel()
+    let signinView = SigninView(frame: UIScreen.main.bounds)
+    var signinViewModel = SigninViewModel(networkRequest: NetworkRequestPost())
     var messagePresenter: MessagePresenterProtocol?
+    var viewControllerPresenter: ViewControllerPresenterProtocol?
 
     // MARK: Life Cycle
 
@@ -36,19 +37,7 @@ class SigninViewController: UIViewController {
     }
     
     @objc func registerButtonAction(sender: UIButton?) {
-        navigationController?.pushViewController(SignupViewController(), animated: true)
-    }
-    
-    func displayAlert(message: String){
-        messagePresenter?.presentMessage(message, on: self)
-    }
-    
-    func showViewController(viewController: UIViewController){
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true, completion: {
-            self.navigationController?.removeFromParent()
-            self.removeFromParent()
-        })
+        viewControllerPresenter?.present(self, to: SignupViewController(), newTree: false)
     }
 
 }
@@ -60,6 +49,7 @@ extension SigninViewController: ViewControllerProtocol{
     func additionalSetup() {
         self.title = "Login"
         messagePresenter = MessagePresenter()
+        viewControllerPresenter = ViewControllerPresenter()
     }
     
     func delegateSetup() {
@@ -83,7 +73,7 @@ extension SigninViewController: ViewModelDelegate{
     func requestSucess() {
         DispatchQueue.main.async {
             self.signinView.spinner.stopAnimating()
-            self.showViewController(viewController: NewsTabBarController())
+            self.viewControllerPresenter?.present(self, to: NewsTabBarController(), newTree: true)
         }
     }
     
@@ -92,11 +82,8 @@ extension SigninViewController: ViewModelDelegate{
             self.signinView.isUserInteractionEnabled = true
             self.signinView.alpha = 1
             self.signinView.spinner.stopAnimating()
-            self.displayAlert(message: errorMessage)
+            self.messagePresenter?.presentMessage(errorMessage, on: self)
         }
-    }
-    
-    func getInformationBack() {
     }
     
 }
@@ -107,7 +94,6 @@ extension SigninViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
         return true
     }
     

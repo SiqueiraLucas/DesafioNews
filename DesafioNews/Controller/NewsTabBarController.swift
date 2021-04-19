@@ -11,7 +11,7 @@ class NewsTabBarController: UITabBarController {
     
     // MARK: Instances
     
-    lazy public var initialTabBar: NewsViewController = {
+    lazy var initialTabBar: NewsViewController = {
         let initialTabBar = NewsViewController()
         let title = "News"
         let defaultImage = UIImage(systemName: "newspaper")

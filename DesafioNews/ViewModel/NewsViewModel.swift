@@ -23,9 +23,9 @@ class NewsViewModel {
     
     //MARK: Initializer
     
-    init (model: NewsModel){
+    init (model: NewsModel, networkRequest: NetworkRequestGetProtocol){
         self.newsModel = model
-        self.networkRequest = NetworkRequestGet()
+        self.networkRequest = networkRequest
     }
     
     //MARK: Functions

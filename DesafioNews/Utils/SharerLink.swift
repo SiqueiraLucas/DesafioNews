@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SharerLink: SharerProtocol{
+struct SharerLink: SharerProtocol{
     
     func share(_ content: Any, on viewController: UIViewController) {
         guard let link = content as? String else {return}
