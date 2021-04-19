@@ -15,11 +15,11 @@ class ViewControllerPresenterMock: ViewControllerPresenterProtocol {
     var toViewController: UIViewController?
     
     func present(_ from: UIViewController, to viewController: UIViewController, newTree: Bool) {
-        presentCalled = true
+        self.presentCalled = true
         self.fromViewController = from
         self.toViewController = viewController
         if newTree{
-            fromViewController = nil
+            self.fromViewController = nil
         }
     }
     

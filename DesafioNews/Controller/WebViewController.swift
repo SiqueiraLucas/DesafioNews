@@ -8,6 +8,9 @@
 import WebKit
 
 class WebViewController: UIViewController {
+    
+    // MARK: Instances
+    
     let webView = WKWebView()
     let urlString: String
     let newsTitle: String
@@ -16,6 +19,8 @@ class WebViewController: UIViewController {
     let favoriteButton = UIBarButtonItem()
     let fixedSpace = UIBarButtonItem(systemItem: .fixedSpace)
     var sharer: SharerProtocol?
+    
+    // MARK: Init
     
     init(urlString: String, newsTitle: String) {
         self.urlString = urlString
@@ -27,6 +32,8 @@ class WebViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Life Cycle
+    
     override func loadView() {
         self.view = webView
     }
@@ -35,7 +42,9 @@ class WebViewController: UIViewController {
         setup()
     }
     
-    @objc func favoriteButtonAction(sender: UIButton) {
+    // MARK: Functions
+    
+    @objc func favoriteButtonAction(sender: UIButton?) {
         if isFavorite{
             UserDefaults.standard.removeObject(forKey: newsTitle)
             favoriteButton.image = UIImage(systemName: "heart")
@@ -46,23 +55,25 @@ class WebViewController: UIViewController {
         isFavorite = !isFavorite
     }
     
-    @objc func shareButtonAction(sender: UIButton) {
+    @objc func shareButtonAction(sender: UIButton?) {
         sharer?.share(urlString, on: self)
     }
 }
 
+// MARK: View Controller Protocol
+
 extension WebViewController: ViewControllerProtocol {
     
     func getContentSetup() {
-        guard let url = URL(string: urlString) else {return}
-        let request = URLRequest(url: url)
-        webView.load(request)
         isFavorite = UserDefaults.standard.bool(forKey: newsTitle)
         if isFavorite{
             favoriteButton.image = UIImage(systemName: "heart.fill")
         }else{
             favoriteButton.image = UIImage(systemName: "heart")
         }
+        guard let url = URL(string: urlString) else {return}
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
     
     func targetsSetup() {

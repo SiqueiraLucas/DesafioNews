@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewControllerPresenter: ViewControllerPresenterProtocol {
+struct ViewControllerPresenter: ViewControllerPresenterProtocol {
     
     func present(_ from: UIViewController, to viewController: UIViewController, newTree: Bool) {
         if newTree{

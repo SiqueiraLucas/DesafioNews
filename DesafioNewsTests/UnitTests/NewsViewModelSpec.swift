@@ -16,7 +16,10 @@ class NewsViewModelSpec: QuickSpec{
         let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGetMock())
         
         describe("NetworkRequest") {
-            guard let networkRequest = sut.networkRequest as? NetworkRequestGetMock else {return}
+            guard let networkRequest = sut.networkRequest as? NetworkRequestGetMock else {
+                expect(false).to(beTrue())
+                return
+            }
             
             //MARK: - Request Sucess
             

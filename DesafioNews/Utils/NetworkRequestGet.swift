@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkRequestGet: NetworkRequestGetProtocol{
+struct NetworkRequestGet: NetworkRequestGetProtocol{
     
     func get<T: Codable>(resource: T.Type, endpoint: String, components: [URLQueryItem]?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
         
