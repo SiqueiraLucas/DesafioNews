@@ -13,15 +13,17 @@ class NewsViewModelSpec: QuickSpec{
     
     override func spec() {
         
-        describe("SpotlightViewModel") {
-            
-            let sut = NewsViewModel(model: NewsModel())
+        let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGetMock())
+        
+        describe("NetworkRequest") {
+            guard let networkRequest = sut.networkRequest as? NetworkRequestGetMock else {
+                expect(false).to(beTrue())
+                return
+            }
             
             //MARK: - Request Sucess
             
             context("NetworkRequestSucess") {
-                let networkRequest = NetworkRequestGetMock()
-                sut.networkRequest = networkRequest
                 sut.request(endpoint: "NewsJson.json", components: nil)
                 
                 it("should request Sucess") {
@@ -57,13 +59,18 @@ class NewsViewModelSpec: QuickSpec{
                     let imageUrl = sut.returnImageUrl(index: 0)
                     expect(imageUrl).to(equal("https://via.placeholder.com/600x300"))
                 }
+                
+                it("should return countItems") {
+                    let countItems = sut.countItems
+                    expect(countItems).to(equal(2))
+                }
             }
             
             //MARK: - Request Error
             
             context("NetworkRequestError") {
-                let networkRequest = NetworkRequestGetMock()
-                sut.networkRequest = networkRequest
+                let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGetMock())
+                guard let networkRequest = sut.networkRequest as? NetworkRequestGetMock else {return}
                 sut.request(endpoint: "None", components: nil)
                 
                 it("should request error") {

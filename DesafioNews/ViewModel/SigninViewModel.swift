@@ -17,8 +17,8 @@ class SigninViewModel {
     
     //MARK: Initializer
     
-    init() {
-        self.networkRequest = NetworkRequestPost()
+    init(networkRequest: NetworkRequestPostProtocol) {
+        self.networkRequest = networkRequest
     }
     
     //MARK: Functions

@@ -10,9 +10,12 @@ import Foundation
 
 class NetworkRequestGetMock: NetworkRequestGetProtocol{
     
+    var requestCalled = false
     var status = "Loading"
     
     func get<T: Codable>(resource: T.Type, endpoint: String, components: [URLQueryItem]?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
+        
+        requestCalled = true
         
         guard let url = Bundle.main.url(forResource: endpoint, withExtension: nil) else {
             completionHandler(.failure(.invalidHTTPResponse(404)))

@@ -125,7 +125,6 @@ extension SpotlightCell: ViewCodeProtocol {
             favoriteImageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.2),
             favoriteImageView.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.2),
             favoriteImageView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
-            
         ])
         
         stackView.setCustomSpacing(15, after: imageView)

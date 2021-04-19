@@ -12,9 +12,10 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    let spotlightViewModel = NewsViewModel(model: NewsModel())
-    let feedViewModel = FeedViewModel(model: NewsModel())
-    private var messagePresenter: MessagePresenterProtocol?
+    var spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
+    var feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
+    var messagePresenter: MessagePresenterProtocol?
+    var viewControllerPresenter: ViewControllerPresenterProtocol?
 
     // MARK: Life Cycle
 
@@ -30,12 +31,6 @@ class NewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         newsView.collectionView.reloadData()
     }
-    
-    // MARK: Functions
-    
-    @objc func favoriteButtonAction(sender: UIButton) {
-        
-    }
 
 }
 
@@ -46,6 +41,7 @@ extension NewsViewController: ViewControllerProtocol{
     func additionalSetup() {
         self.title = "News"
         messagePresenter = MessagePresenter()
+        viewControllerPresenter = ViewControllerPresenter()
     }
     
     func delegateSetup() {
@@ -53,7 +49,6 @@ extension NewsViewController: ViewControllerProtocol{
         newsView.collectionView.dataSource = self
         spotlightViewModel.delegate = self
         feedViewModel.delegate = self
-        
     }
     
     func getContentSetup(){
@@ -80,9 +75,6 @@ extension NewsViewController: ViewModelDelegate{
         DispatchQueue.main.async {
             self.messagePresenter?.presentMessage(errorMessage, on: self)
         }
-    }
-    
-    func getInformationBack() {
     }
     
 }

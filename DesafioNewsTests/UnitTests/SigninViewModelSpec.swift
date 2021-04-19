@@ -13,15 +13,15 @@ class SigninViewModelSpec: QuickSpec{
     
     override func spec() {
         
-        describe("SigninViewModel") {
-            
-            let sut = SigninViewModel()
-            
-            //MARK: - Request Sucess
+        let sut = SigninViewModel(networkRequest: NetworkRequestPostMock())
+        
+        describe("NetworkRequest") {
+            guard let networkRequest = sut.networkRequest as? NetworkRequestPostMock else {
+                expect(false).to(beTrue())
+                return
+            }
             
             context("NetworkRequestSucess") {
-                let networkRequest = NetworkRequestPostMock()
-                sut.networkRequest = networkRequest
                 sut.sendValue(emailTextField: "lucas@teste.com", passwordTextField: "123")
                 
                 it("should request Sucess") {
@@ -30,9 +30,6 @@ class SigninViewModelSpec: QuickSpec{
             }
             
             context("NetworkRequestError") {
-                let networkRequest = NetworkRequestPostMock()
-                sut.networkRequest = networkRequest
-                
                 it("should invalid Email") {
                     sut.sendValue(emailTextField: "lucas.com", passwordTextField: "123")
                     expect(networkRequest.status).to(equal("Invalid Email"))

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MessagePresenter: MessagePresenterProtocol {
+struct MessagePresenter: MessagePresenterProtocol {
     
     func presentMessage(_ message: String, on viewController: UIViewController) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)

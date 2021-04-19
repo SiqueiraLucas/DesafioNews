@@ -57,17 +57,19 @@ extension SignupView: ViewCodeProtocol {
     }
 
     func configureConstraints() {
-        signupInformationContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10).isActive = true
-        signupInformationContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        signupInformationContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
-        signupInformationContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
-        
-        registerButton.topAnchor.constraint(equalTo: signupInformationContainer.bottomAnchor, constant: 30).isActive = true
-        registerButton.widthAnchor.constraint(equalTo: signupInformationContainer.widthAnchor).isActive = true
-        registerButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        registerButton.centerXAnchor.constraint(equalTo: signupInformationContainer.centerXAnchor).isActive = true
-        
-        spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            signupInformationContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10),
+            signupInformationContainer.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            signupInformationContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
+            signupInformationContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
+            
+            registerButton.topAnchor.constraint(equalTo: signupInformationContainer.bottomAnchor, constant: 30),
+            registerButton.widthAnchor.constraint(equalTo: signupInformationContainer.widthAnchor),
+            registerButton.heightAnchor.constraint(equalToConstant: 50),
+            registerButton.centerXAnchor.constraint(equalTo: signupInformationContainer.centerXAnchor),
+            
+            spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
     }
 }

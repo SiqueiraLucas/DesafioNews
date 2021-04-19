@@ -8,7 +8,6 @@
 import Foundation
 
 protocol ViewModelDelegate: class {
-    func getInformationBack()
     func requestSucess()
     func requestError(errorMessage: String)
 }
