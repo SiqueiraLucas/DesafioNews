@@ -11,13 +11,15 @@ class SignupViewModel {
     
     //MARK: - Instances
     
-    var networkRequest: NetworkRequestPostProtocol?
+    private var bearer = Bearer()
+    
+    var networkRequest: NetworkRequestProtocol?
     
     weak var delegate: ViewModelDelegate?
     
     //MARK: Initializer
     
-    init(networkRequest: NetworkRequestPostProtocol) {
+    init(networkRequest: NetworkRequestProtocol) {
         self.networkRequest = networkRequest
     }
     
@@ -35,19 +37,20 @@ class SignupViewModel {
     // MARK: Request
     
     private func request(endpoint: String, parameters: [String: Any]){
-        networkRequest?.post(endpoint: endpoint, parameters: parameters, completionHandler: { [weak self] (result) in
+        networkRequest?.request(resource: Bearer.self, method: .post, endpoint: endpoint, components: parameters, key: nil, completionHandler: { [weak self] (result) in
             switch result{
-            case .success(_):
-                self?.delegate?.requestSucess()
-            case .failure(let error):
-                switch error {
-                    case .invalidHTTPResponse(_):
-                        self?.delegate?.requestError(errorMessage: "Email ou senha inválido(s)!")
-                    case .networkError(_):
-                        self?.delegate?.requestError(errorMessage: "Sem conexão com a internet!")
-                    default:
-                        self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
-                }
+                case .success(let data):
+                    self?.bearer = data
+                    self?.delegate?.requestSucess()
+                case .failure(let error):
+                    switch error {
+                        case .invalidHTTPResponse(_):
+                            self?.delegate?.requestError(errorMessage: "Email ou senha inválido(s)!")
+                        case .networkError(_):
+                            self?.delegate?.requestError(errorMessage: "Sem conexão com a internet!")
+                        default:
+                            self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
+                    }
             }
         })
     }

@@ -13,12 +13,12 @@ class NewsViewControllerSpec: QuickSpec {
     
     override func spec() {
         
-        let sut = NewsViewController()
+        let sut = NewsViewController(apiRequestKey: "")
         
         // MARK: View Controller Protocol
         
         describe("ViewControllerProtocol") {
-            let sut = NewsViewController()
+            let sut = NewsViewController(apiRequestKey: "")
             _ = sut.view
             
             context("additionalSetup") {
