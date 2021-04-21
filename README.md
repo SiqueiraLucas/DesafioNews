@@ -45,7 +45,7 @@ Diferencial:
 
 [Documentação](https://documenter.getpostman.com/view/8211335/SzKbLFAY)
 
-É utilizado de tokens para controle de sessão, as requisições que necessitam que o usuário esteja logado precisará passar o token com a chave`Authorization` no header.
+É utilizado de tokens para controle de sessão, as requisições que necessitam que o usuário esteja logado precisará passar o token com a chave `Authorization` no header.
 
 Token: `eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjU5LCJlbWFpbCI6ImRpbWFzLmdhYnJpZWxAenJvYmFuay5jb20uYnIifQ.a3j7sRx8FIedZCfDGLocduOYpcibfIenX7TVJjv6Sis`
 
