@@ -13,10 +13,10 @@ class SignupViewModelSpec: QuickSpec{
     
     override func spec() {
         
-        let sut = SignupViewModel(networkRequest: NetworkRequestPostMock())
+        let sut = SignupViewModel(networkRequest: NetworkRequestMock())
         
         describe("NetworkRequest") {
-            guard let networkRequest = sut.networkRequest as? NetworkRequestPostMock else {
+            guard let networkRequest = sut.networkRequest as? NetworkRequestMock else {
                 expect(false).to(beTrue())
                 return
             }

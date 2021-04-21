@@ -9,33 +9,20 @@ import UIKit
 
 class NewsTabBarController: UITabBarController {
     
-    // MARK: Instances
-    
-    lazy var initialTabBar: NewsViewController = {
-        let initialTabBar = NewsViewController()
-        let title = "News"
-        let defaultImage = UIImage(systemName: "newspaper")
-        let selectedImage = UIImage(systemName: "newspaper.fill")
-        let tabBarItems = (title: title, image: defaultImage, selectedImage: selectedImage)
-        let tabBarItem = UITabBarItem(title: tabBarItems.title, image: tabBarItems.image, selectedImage: tabBarItems.selectedImage)
-        initialTabBar.tabBarItem = tabBarItem
-        return initialTabBar
-    }()
-    
     // MARK: Init
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.setup()
+    init(initialTabBar: UIViewController) {
+        super.init(nibName: nil, bundle: nil)
+        self.setup(initialTabBar: initialTabBar)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Functions
     
-    func setup(){
+    func setup(initialTabBar: UIViewController){
         super.viewWillAppear(true)
         tabBar.tintColor = .systemOrange
         tabBar.isTranslucent = true

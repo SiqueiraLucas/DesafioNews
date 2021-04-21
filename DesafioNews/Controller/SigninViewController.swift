@@ -12,7 +12,7 @@ class SigninViewController: UIViewController {
     // MARK: Instances
 
     let signinView = SigninView(frame: UIScreen.main.bounds)
-    var signinViewModel = SigninViewModel(networkRequest: NetworkRequestPost())
+    var signinViewModel = SigninViewModel(networkRequest: NetworkRequest())
     var messagePresenter: MessagePresenterProtocol?
     var viewControllerPresenter: ViewControllerPresenterProtocol?
 
@@ -73,7 +73,7 @@ extension SigninViewController: ViewModelDelegate{
     func requestSucess() {
         DispatchQueue.main.async {
             self.signinView.spinner.stopAnimating()
-            self.viewControllerPresenter?.present(self, to: NewsTabBarController(), newTree: true)
+            self.viewControllerPresenter?.present(self, to: NewsTabBarController(initialTabBar: NewsViewController(apiRequestKey: self.signinViewModel.returnApiRequestKey())), newTree: true)
         }
     }
     

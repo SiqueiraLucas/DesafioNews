@@ -13,10 +13,10 @@ class NewsViewModelSpec: QuickSpec{
     
     override func spec() {
         
-        let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGetMock())
+        let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestMock(), apiRequestKey: "")
         
         describe("NetworkRequest") {
-            guard let networkRequest = sut.networkRequest as? NetworkRequestGetMock else {
+            guard let networkRequest = sut.networkRequest as? NetworkRequestMock else {
                 expect(false).to(beTrue())
                 return
             }
@@ -69,8 +69,8 @@ class NewsViewModelSpec: QuickSpec{
             //MARK: - Request Error
             
             context("NetworkRequestError") {
-                let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGetMock())
-                guard let networkRequest = sut.networkRequest as? NetworkRequestGetMock else {return}
+                let sut = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestMock(), apiRequestKey: "")
+                guard let networkRequest = sut.networkRequest as? NetworkRequestMock else {return}
                 sut.request(endpoint: "None", components: nil)
                 
                 it("should request error") {

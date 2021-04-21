@@ -1,5 +1,5 @@
 //
-//  SpotlightModel.swift
+//  NewsModel.swift
 //  DesafioNews
 //
 //  Created by Lucas Siqueira on 13/04/21.
