@@ -13,7 +13,9 @@ class NewsViewModel {
     
     private var newsModel: NewsModel
     
-    var networkRequest: NetworkRequestGetProtocol?
+    private var apiRequestKey: String
+    
+    var networkRequest: NetworkRequestProtocol?
     
     weak var delegate: ViewModelDelegate?
     
@@ -23,9 +25,10 @@ class NewsViewModel {
     
     //MARK: Initializer
     
-    init (model: NewsModel, networkRequest: NetworkRequestGetProtocol){
+    init (model: NewsModel, networkRequest: NetworkRequestProtocol, apiRequestKey: String){
         self.newsModel = model
         self.networkRequest = networkRequest
+        self.apiRequestKey = apiRequestKey
     }
     
     //MARK: Functions
@@ -63,8 +66,8 @@ class NewsViewModel {
     
     // MARK: Request
     
-    func request(endpoint: String, components: [URLQueryItem]?){
-        networkRequest?.get(resource: NewsModel.self, endpoint: endpoint, components: components, completionHandler: { [weak self] (result) in
+    func request(endpoint: String, components: [String: Any]?){
+        networkRequest?.request(resource: NewsModel.self, method: .get, endpoint: endpoint, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
             switch result {
                 case .success(let data):
                     self?.newsModel.data.append(contentsOf: data.data)

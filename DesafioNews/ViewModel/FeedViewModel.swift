@@ -20,11 +20,11 @@ class FeedViewModel: NewsViewModel {
         return newCurrentPage.description
     }
     
-    func returnUrlComponents() -> [URLQueryItem]{
+    func returnUrlComponents() -> [String: Any]{
         return [
-            URLQueryItem(name: "current_page", value: returnCurrentPage()),
-            URLQueryItem(name: "per_page", value: "10"),
-            URLQueryItem(name: "published_at", value: ""),
+            "current_page" : returnCurrentPage(),
+            "per_page" : "10",
+            "published_at" : ""
         ]
     }
 }

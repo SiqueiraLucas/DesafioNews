@@ -7,13 +7,8 @@
 
 import Foundation
 
-protocol NetworkRequestGetProtocol {
-    func get<T: Codable> (resource: T.Type, endpoint: String, components: [URLQueryItem]?, completionHandler: @escaping (_ result: Result<T, RequestError>) -> Void)
-}
-
-protocol NetworkRequestPostProtocol {
-    func post(endpoint: String, parameters: [String: Any],
-                     completionHandler: @escaping (_ result: Result<Any?, RequestError>) -> Void)
+protocol NetworkRequestProtocol {
+    func request<T: Codable>(resource: T.Type, method: RequestMethod, endpoint: String, components: [String : Any]?, key: String?, completionHandler: @escaping (Result<T, RequestError>) -> Void)
 }
 
 enum RequestError: Error {
@@ -21,4 +16,9 @@ enum RequestError: Error {
     case notHTTPResponse
     case invalidHTTPResponse(Int)
     case parseError(Error)
+}
+
+enum RequestMethod: String {
+    case get = "GET"
+    case post = "POST"
 }

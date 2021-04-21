@@ -12,10 +12,22 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    var spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
-    var feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequestGet())
+    var spotlightViewModel: NewsViewModel
+    var feedViewModel: FeedViewModel
     var messagePresenter: MessagePresenterProtocol?
     var viewControllerPresenter: ViewControllerPresenterProtocol?
+    
+    // MARK: Init
+    
+    init(apiRequestKey: String) {
+        spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequest(), apiRequestKey: apiRequestKey)
+        feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequest(), apiRequestKey: apiRequestKey)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: Life Cycle
 
@@ -40,6 +52,11 @@ extension NewsViewController: ViewControllerProtocol{
     
     func additionalSetup() {
         self.title = "News"
+        let defaultImage = UIImage(systemName: "newspaper")
+        let selectedImage = UIImage(systemName: "newspaper.fill")
+        let tabBarItems = (title: title, image: defaultImage, selectedImage: selectedImage)
+        let tabBarItem = UITabBarItem(title: tabBarItems.title, image: tabBarItems.image, selectedImage: tabBarItems.selectedImage)
+        self.tabBarItem = tabBarItem
         messagePresenter = MessagePresenter()
         viewControllerPresenter = ViewControllerPresenter()
     }
