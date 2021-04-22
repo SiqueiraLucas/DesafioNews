@@ -68,10 +68,11 @@ class NewsViewModel {
     
     func request(endpoint: String, components: [String: Any]?){
         networkRequest?.request(resource: NewsModel.self, method: .get, endpoint: endpoint, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
+            guard let self = self else {return}
             switch result {
                 case .success(let data):
-                    self?.newsModel.data.append(contentsOf: data.data)
-                    self?.delegate?.requestSucess()
+                    self.newsModel.data.append(contentsOf: data.data)
+                    self.delegate?.requestSucess()
                 case .failure(let error):
                     print(error)
             }

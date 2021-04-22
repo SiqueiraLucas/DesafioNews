@@ -38,18 +38,19 @@ class SignupViewModel {
     
     private func request(endpoint: String, parameters: [String: Any]){
         networkRequest?.request(resource: Bearer.self, method: .post, endpoint: endpoint, components: parameters, key: nil, completionHandler: { [weak self] (result) in
+            guard let self = self else {return}
             switch result{
                 case .success(let data):
-                    self?.bearer = data
-                    self?.delegate?.requestSucess()
+                    self.bearer = data
+                    self.delegate?.requestSucess()
                 case .failure(let error):
                     switch error {
                         case .invalidHTTPResponse(_):
-                            self?.delegate?.requestError(errorMessage: "Email ou senha inválido(s)!")
+                            self.delegate?.requestError(errorMessage: "Email ou senha inválido(s)!")
                         case .networkError(_):
-                            self?.delegate?.requestError(errorMessage: "Sem conexão com a internet!")
+                            self.delegate?.requestError(errorMessage: "Sem conexão com a internet!")
                         default:
-                            self?.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
+                            self.delegate?.requestError(errorMessage: "Erro, tente novamente mais tarde!")
                     }
             }
         })
