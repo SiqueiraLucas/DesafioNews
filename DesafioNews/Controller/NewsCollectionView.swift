@@ -73,12 +73,8 @@ extension NewsViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         newsView.activityIndicator.stopAnimating()
-        if indexPath.section == 1{
-            if indexPath.row == feedViewModel.countItems - 10{
-                let endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=&per_page=&published_at="
-                let components = feedViewModel.returnUrlComponents()
-                feedViewModel.request(endpoint: endpoint, components: components)
-            }
+        if indexPath.section == 1 && indexPath.row == feedViewModel.countItems - 10{
+            feedViewModel.request(components: feedViewModel.returnUrlComponents())
         }
     }
     

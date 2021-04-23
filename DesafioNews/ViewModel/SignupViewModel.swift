@@ -12,15 +12,14 @@ class SignupViewModel {
     //MARK: - Instances
     
     private var bearer = Bearer()
-    
+    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/auth/signup"
     var networkRequest: NetworkRequestProtocol?
-    
     weak var delegate: ViewModelDelegate?
     
     //MARK: Initializer
     
-    init(networkRequest: NetworkRequestProtocol) {
-        self.networkRequest = networkRequest
+    init() {
+        self.networkRequest = NetworkRequest()
     }
     
     //MARK: Functions
@@ -29,15 +28,14 @@ class SignupViewModel {
         guard let nameTextField = nameTextField else {return}
         guard let emailTextField = emailTextField else {return}
         guard let passwordTextField = passwordTextField else {return}
-        let parameters = ["name": nameTextField, "email": emailTextField, "password": passwordTextField]
-        let endpoint = "https://mesa-news-api.herokuapp.com/v1/client/auth/signup"
-        request(endpoint: endpoint, parameters: parameters)
+        let components = ["name": nameTextField, "email": emailTextField, "password": passwordTextField]
+        request(components: components)
     }
     
     // MARK: Request
     
-    private func request(endpoint: String, parameters: [String: Any]){
-        networkRequest?.request(resource: Bearer.self, method: .post, endpoint: endpoint, components: parameters, key: nil, completionHandler: { [weak self] (result) in
+    private func request(components: [String: Any]){
+        networkRequest?.request(resource: Bearer.self, method: .post, endpoint: endpoint, components: components, key: nil, completionHandler: { [weak self] (result) in
             guard let self = self else {return}
             switch result{
                 case .success(let data):
