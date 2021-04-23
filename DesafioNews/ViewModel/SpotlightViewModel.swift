@@ -1,5 +1,5 @@
 //
-//  NewsViewModel.swift
+//  SpotlightViewModel.swift
 //  DesafioNews
 //
 //  Created by Lucas Siqueira on 14/04/21.
@@ -7,28 +7,25 @@
 
 import Foundation
 
-class NewsViewModel {
+class SpotlightViewModel {
     
     //MARK: - Instances
     
     private var newsModel: NewsModel
-    
     private var apiRequestKey: String
-    
+    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
     var networkRequest: NetworkRequestProtocol?
-    
-    weak var delegate: ViewModelDelegate?
-    
     var countItems : Int {
         return newsModel.data.count
     }
+    weak var delegate: ViewModelDelegate?
     
     //MARK: Initializer
     
-    init (model: NewsModel, networkRequest: NetworkRequestProtocol, apiRequestKey: String){
+    init (model: NewsModel, apiRequestKey: String){
         self.newsModel = model
-        self.networkRequest = networkRequest
         self.apiRequestKey = apiRequestKey
+        self.networkRequest = NetworkRequest()
     }
     
     //MARK: Functions
@@ -66,7 +63,7 @@ class NewsViewModel {
     
     // MARK: Request
     
-    func request(endpoint: String, components: [String: Any]?){
+    func request(components: [String: Any]?){
         networkRequest?.request(resource: NewsModel.self, method: .get, endpoint: endpoint, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
             guard let self = self else {return}
             switch result {

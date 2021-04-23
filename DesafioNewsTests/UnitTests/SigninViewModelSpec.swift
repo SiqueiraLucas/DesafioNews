@@ -13,7 +13,8 @@ class SigninViewModelSpec: QuickSpec{
     
     override func spec() {
         
-        let sut = SigninViewModel(networkRequest: NetworkRequestMock())
+        let sut = SigninViewModel()
+        sut.networkRequest = NetworkRequestMock()
         
         describe("NetworkRequest") {
             guard let networkRequest = sut.networkRequest as? NetworkRequestMock else {

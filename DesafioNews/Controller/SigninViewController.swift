@@ -12,7 +12,7 @@ class SigninViewController: UIViewController {
     // MARK: Instances
 
     let signinView = SigninView(frame: UIScreen.main.bounds)
-    var signinViewModel = SigninViewModel(networkRequest: NetworkRequest())
+    var signinViewModel = SigninViewModel()
     var messagePresenter: MessagePresenterProtocol?
     var viewControllerPresenter: ViewControllerPresenterProtocol?
 
