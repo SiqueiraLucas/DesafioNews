@@ -15,8 +15,10 @@ class NewsCollectionViewSpec: QuickSpec {
         
         let sut = NewsViewController(apiRequestKey: "")
         let newsData = NewsData(title: "Title", description: "Description", content: "Content", author: "Author", published_at: "2020-01-30T13:45:00.000Z", highlight: false, url: "www.modelUrl", image_url: "https://image.cnbcfm.com/api/v1/image/106422372-1583253995153rtx7ashh.jpg?v=1583254080")
-        sut.spotlightViewModel = NewsViewModel(model: NewsModel(data: [newsData]), networkRequest: NetworkRequestMock(), apiRequestKey: "")
-        sut.feedViewModel = FeedViewModel(model: NewsModel(data: [newsData, newsData]), networkRequest: NetworkRequestMock(), apiRequestKey: "")
+        sut.spotlightViewModel = SpotlightViewModel(model: NewsModel(data: [newsData]), apiRequestKey: "")
+        sut.spotlightViewModel.networkRequest = NetworkRequestMock()
+        sut.feedViewModel = FeedViewModel(model: NewsModel(data: [newsData, newsData]), apiRequestKey: "")
+        sut.feedViewModel.networkRequest = NetworkRequestMock()
         
         describe("NewsCollectionView") {
             

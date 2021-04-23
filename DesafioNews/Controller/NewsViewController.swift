@@ -12,7 +12,7 @@ class NewsViewController: UIViewController {
     // MARK: Instances
 
     let newsView = NewsView(frame: UIScreen.main.bounds)
-    var spotlightViewModel: NewsViewModel
+    var spotlightViewModel: SpotlightViewModel
     var feedViewModel: FeedViewModel
     var messagePresenter: MessagePresenterProtocol?
     var viewControllerPresenter: ViewControllerPresenterProtocol?
@@ -20,8 +20,8 @@ class NewsViewController: UIViewController {
     // MARK: Init
     
     init(apiRequestKey: String) {
-        spotlightViewModel = NewsViewModel(model: NewsModel(), networkRequest: NetworkRequest(), apiRequestKey: apiRequestKey)
-        feedViewModel = FeedViewModel(model: NewsModel(), networkRequest: NetworkRequest(), apiRequestKey: apiRequestKey)
+        spotlightViewModel = SpotlightViewModel(model: NewsModel(), apiRequestKey: apiRequestKey)
+        feedViewModel = FeedViewModel(model: NewsModel(), apiRequestKey: apiRequestKey)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -69,10 +69,8 @@ extension NewsViewController: ViewControllerProtocol{
     }
     
     func getContentSetup(){
-        let endpointSpotlight = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
-        let endpointFeed = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=&per_page=&published_at="
-        spotlightViewModel.request(endpoint: endpointSpotlight, components: nil)
-        feedViewModel.request(endpoint: endpointFeed, components: feedViewModel.returnUrlComponents())
+        spotlightViewModel.request(components: nil)
+        feedViewModel.request(components: feedViewModel.returnUrlComponents())
     }
     
     func targetsSetup() {}

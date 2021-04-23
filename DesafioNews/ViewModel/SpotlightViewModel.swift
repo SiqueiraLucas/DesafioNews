@@ -1,5 +1,5 @@
 //
-//  NewsViewModel.swift
+//  SpotlightViewModel.swift
 //  DesafioNews
 //
 //  Created by Lucas Siqueira on 14/04/21.
@@ -12,18 +12,13 @@ class SpotlightViewModel {
     //MARK: - Instances
     
     private var newsModel: NewsModel
-
-    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
-    
     private var apiRequestKey: String
-    
+    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
     var networkRequest: NetworkRequestProtocol?
-    
-    weak var delegate: ViewModelDelegate?
-    
     var countItems : Int {
         return newsModel.data.count
     }
+    weak var delegate: ViewModelDelegate?
     
     //MARK: Initializer
     
