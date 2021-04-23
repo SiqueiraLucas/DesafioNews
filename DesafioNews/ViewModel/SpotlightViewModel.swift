@@ -7,11 +7,13 @@
 
 import Foundation
 
-class NewsViewModel {
+class SpotlightViewModel {
     
     //MARK: - Instances
     
     private var newsModel: NewsModel
+
+    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
     
     private var apiRequestKey: String
     
@@ -25,10 +27,10 @@ class NewsViewModel {
     
     //MARK: Initializer
     
-    init (model: NewsModel, networkRequest: NetworkRequestProtocol, apiRequestKey: String){
+    init (model: NewsModel, apiRequestKey: String){
         self.newsModel = model
-        self.networkRequest = networkRequest
         self.apiRequestKey = apiRequestKey
+        self.networkRequest = NetworkRequest()
     }
     
     //MARK: Functions
@@ -66,7 +68,7 @@ class NewsViewModel {
     
     // MARK: Request
     
-    func request(endpoint: String, components: [String: Any]?){
+    func request(components: [String: Any]?){
         networkRequest?.request(resource: NewsModel.self, method: .get, endpoint: endpoint, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
             guard let self = self else {return}
             switch result {
