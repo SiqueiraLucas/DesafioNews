@@ -11,14 +11,14 @@ class SignupViewModel {
     
     //MARK: - Instances
     
-    private var bearer = Bearer()
-    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/auth/signup"
+    private var bearer: Bearer
     var networkRequest: NetworkRequestProtocol?
     weak var delegate: ViewModelDelegate?
     
     //MARK: Initializer
     
-    init() {
+    init(model: Bearer = Bearer()) {
+        self.bearer = model
         self.networkRequest = NetworkRequest()
     }
     
@@ -35,7 +35,7 @@ class SignupViewModel {
     // MARK: Request
     
     private func request(components: [String: Any]){
-        networkRequest?.request(resource: Bearer.self, method: .post, endpoint: endpoint, components: components, key: nil, completionHandler: { [weak self] (result) in
+        networkRequest?.request(responseType: Bearer.self, method: .post, endpoint: RequestEndpoint.signup, components: components, key: nil, completionHandler: { [weak self] (result) in
             guard let self = self else {return}
             switch result{
                 case .success(let data):

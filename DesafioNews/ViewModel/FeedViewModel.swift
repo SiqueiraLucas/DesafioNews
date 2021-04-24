@@ -14,7 +14,6 @@ class FeedViewModel {
     private var newsModel: NewsModel
     private var apiRequestKey: String
     private var newCurrentPage = 0
-    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news?current_page=&per_page=&published_at="
     var networkRequest: NetworkRequestProtocol?
     var countItems : Int {
         return newsModel.data.count
@@ -23,7 +22,7 @@ class FeedViewModel {
     
     //MARK: Initializer
     
-    init (model: NewsModel, apiRequestKey: String){
+    init (model: NewsModel = NewsModel(), apiRequestKey: String){
         self.newsModel = model
         self.apiRequestKey = apiRequestKey
         self.networkRequest = NetworkRequest()
@@ -78,7 +77,7 @@ class FeedViewModel {
     // MARK: Request
     
     func request(components: [String: Any]?){
-        networkRequest?.request(resource: NewsModel.self, method: .get, endpoint: endpoint, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
+        networkRequest?.request(responseType: NewsModel.self, method: .get, endpoint: RequestEndpoint.feed, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
             guard let self = self else {return}
             switch result {
                 case .success(let data):

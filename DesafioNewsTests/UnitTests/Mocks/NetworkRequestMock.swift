@@ -12,14 +12,21 @@ class NetworkRequestMock: NetworkRequestProtocol{
     
     var requestCalled = false
     var status = "Loading"
+    var endpoint = ""
+    private var endpointMock: String
     
-    func request<T: Codable>(resource: T.Type, method: RequestMethod, endpoint: String, components: [String : Any]?, key: String?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
+    init(endpointMock: String = "News.json") {
+        self.endpointMock = endpointMock
+    }
+    
+    func request<T: Codable>(responseType: T.Type, method: RequestMethod, endpoint: String, components: [String : Any]?, key: String?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
         
         requestCalled = true
+        self.endpoint = endpoint
         
         switch method {
             case .get:
-                guard let url = Bundle.main.url(forResource: endpoint, withExtension: nil) else {
+                guard let url = Bundle.main.url(forResource: endpointMock, withExtension: nil) else {
                     completionHandler(.failure(.invalidHTTPResponse(404)))
                     status = "Invalid Url"
                     return
