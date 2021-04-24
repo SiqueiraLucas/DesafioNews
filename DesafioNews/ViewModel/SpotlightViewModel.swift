@@ -13,7 +13,6 @@ class SpotlightViewModel {
     
     private var newsModel: NewsModel
     private var apiRequestKey: String
-    var endpoint = "https://mesa-news-api.herokuapp.com/v1/client/news/highlights"
     var networkRequest: NetworkRequestProtocol?
     var countItems : Int {
         return newsModel.data.count
@@ -22,7 +21,7 @@ class SpotlightViewModel {
     
     //MARK: Initializer
     
-    init (model: NewsModel, apiRequestKey: String){
+    init (model: NewsModel = NewsModel(), apiRequestKey: String){
         self.newsModel = model
         self.apiRequestKey = apiRequestKey
         self.networkRequest = NetworkRequest()
@@ -64,7 +63,7 @@ class SpotlightViewModel {
     // MARK: Request
     
     func request(components: [String: Any]?){
-        networkRequest?.request(resource: NewsModel.self, method: .get, endpoint: endpoint, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
+        networkRequest?.request(responseType: NewsModel.self, method: .get, endpoint: RequestEndpoint.spotlight, components: components, key: apiRequestKey, completionHandler: { [weak self] (result) in
             guard let self = self else {return}
             switch result {
                 case .success(let data):

@@ -20,8 +20,8 @@ class NewsViewController: UIViewController {
     // MARK: Init
     
     init(apiRequestKey: String) {
-        spotlightViewModel = SpotlightViewModel(model: NewsModel(), apiRequestKey: apiRequestKey)
-        feedViewModel = FeedViewModel(model: NewsModel(), apiRequestKey: apiRequestKey)
+        spotlightViewModel = SpotlightViewModel(apiRequestKey: apiRequestKey)
+        feedViewModel = FeedViewModel(apiRequestKey: apiRequestKey)
         super.init(nibName: nil, bundle: nil)
     }
 

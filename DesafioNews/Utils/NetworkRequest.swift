@@ -11,7 +11,7 @@ struct NetworkRequest: NetworkRequestProtocol{
     
     //MARK: Request
     
-    func request<T: Codable>(resource: T.Type, method: RequestMethod, endpoint: String, components: [String : Any]?, key: String?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
+    func request<T: Codable>(responseType: T.Type, method: RequestMethod, endpoint: String, components: [String : Any]?, key: String?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
         
         guard let request = setupRequest(method: method, endpoint: endpoint, components: components, key: key) else {return}
         

@@ -15,7 +15,6 @@ class NewsViewModelSpec: QuickSpec{
         
         let sut = SpotlightViewModel(model: NewsModel(), apiRequestKey: "")
         sut.networkRequest = NetworkRequestMock()
-        sut.endpoint = "News.json"
         
         describe("NetworkRequest") {
             guard let networkRequest = sut.networkRequest as? NetworkRequestMock else {
@@ -72,16 +71,12 @@ class NewsViewModelSpec: QuickSpec{
             
             context("NetworkRequestError") {
                 let sut = SpotlightViewModel(model: NewsModel(), apiRequestKey: "")
-                sut.networkRequest = NetworkRequestMock()
+                sut.networkRequest = NetworkRequestMock(endpointMock: "")
                 guard let networkRequest = sut.networkRequest as? NetworkRequestMock else {return}
                 sut.request(components: nil)
                 
                 it("should request error") {
                     expect(networkRequest.status).to(equal("Invalid Url"))
-                }
-                
-                it("should valid endpoint") {
-                    expect(sut.endpoint).to(equal("https://mesa-news-api.herokuapp.com/v1/client/news/highlights"))
                 }
             }
         }
