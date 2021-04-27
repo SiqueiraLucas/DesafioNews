@@ -22,6 +22,20 @@ class NewsViewModelSpec: QuickSpec{
                 return
             }
             
+            //MARK: - Request Call
+            
+            context("NetworkRequestCall") {
+                sut.request(components: nil)
+                
+                it("should arguments correct"){
+                    expect(networkRequest.responseType).to(beAKindOf(NewsModel.Type.self))
+                    expect(networkRequest.method).to(equal(RequestMethod.get))
+                    expect(networkRequest.endpoint).to(equal("https://mesa-news-api.herokuapp.com/v1/client/news/highlights"))
+                    expect(networkRequest.components).to(beNil())
+                    expect(networkRequest.key).toNot(beNil())
+                }
+            }
+            
             //MARK: - Request Sucess
             
             context("NetworkRequestSucess") {
@@ -63,7 +77,7 @@ class NewsViewModelSpec: QuickSpec{
                 
                 it("should return countItems") {
                     let countItems = sut.countItems
-                    expect(countItems).to(equal(2))
+                    expect(countItems).to(equal(4))
                 }
             }
             

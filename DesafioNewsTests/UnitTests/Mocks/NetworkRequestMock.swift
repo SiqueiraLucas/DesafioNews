@@ -10,19 +10,34 @@ import Foundation
 
 class NetworkRequestMock: NetworkRequestProtocol{
     
+    //MARK: - Instances
+    
     var requestCalled = false
-    var status = "Loading"
+    var responseType: Any?
     var endpoint = ""
+    var components: [String : Any]?
+    var key: String?
+    var method: RequestMethod?
+    
+    var status = "Loading"
     private var endpointMock: String
+    
+    //MARK: - Init
     
     init(endpointMock: String = "News.json") {
         self.endpointMock = endpointMock
     }
     
+    //MARK: - Functions
+    
     func request<T: Codable>(responseType: T.Type, method: RequestMethod, endpoint: String, components: [String : Any]?, key: String?, completionHandler: @escaping (Result<T, RequestError>) -> Void) {
         
-        requestCalled = true
+        self.requestCalled = true
+        self.responseType = responseType
+        self.method = method
         self.endpoint = endpoint
+        self.components = components
+        self.key = key
         
         switch method {
             case .get:

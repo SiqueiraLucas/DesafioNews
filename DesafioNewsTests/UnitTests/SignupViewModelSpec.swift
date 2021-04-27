@@ -22,6 +22,22 @@ class SignupViewModelSpec: QuickSpec{
                 return
             }
             
+            //MARK: - Request Call
+            
+            context("NetworkRequestCall") {
+                sut.sendValue(nameTextField: "L", emailTextField: "lucas@teste.com", passwordTextField: "123")
+                
+                it("should arguments correct"){
+                    expect(networkRequest.responseType).to(beAKindOf(Bearer.Type.self))
+                    expect(networkRequest.method).to(equal(RequestMethod.post))
+                    expect(networkRequest.endpoint).to(equal("https://mesa-news-api.herokuapp.com/v1/client/auth/signup"))
+                    expect(networkRequest.components).toNot(beNil())
+                    expect(networkRequest.key).to(beNil())
+                }
+            }
+            
+            //MARK: - Request Sucess
+            
             context("NetworkRequestSucess") {
                 sut.sendValue(nameTextField: "L", emailTextField: "lucas@teste.com", passwordTextField: "123")
                 
@@ -29,6 +45,8 @@ class SignupViewModelSpec: QuickSpec{
                     expect(networkRequest.status).to(equal("Sucess"))
                 }
             }
+            
+            //MARK: - Request Error
             
             context("NetworkRequestError") {
                 it("should invalid Email") {
